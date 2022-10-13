@@ -1,0 +1,77 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="card card-stats">
+                <div class="card-header">
+                    <div class="card-icon icon-color1">
+                        <i class="material-icons header-icon">list_alt</i>
+                    </div>
+                    <p class="card-category">Number of active tasks:</p>
+                    <h3 class="card-title">
+                        50 / 200
+                    </h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <a class="module-link" href="javascript:void(0)">Open task module</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card card-stats">
+                <div class="card-header">
+                    <div class="card-icon icon-color2">
+                        <i class="material-icons header-icon">business</i>
+                    </div>
+                    <p class="card-category">Number of open projects:</p>
+                    <h3 class="card-title">
+                        20 / 150
+                    </h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <a class="module-link" href="javascript:void(0)">Open project module</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card card-stats">
+                <div class="card-header">
+                    <div class="card-icon icon-color3">
+                        <i class="material-icons header-icon">people</i>
+                    </div>
+                    <p class="card-category">Active employees:</p>
+                    <h3 class="card-title">
+                        50 / 100
+                    </h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <a class="module-link" href="javascript:void(0)">Open employee module</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="coll">
+            <mat-card>
+                <mat-card-title>Recent tasks</mat-card-title>
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+                    <ng-container *ngFor="let column of columns" [matColumnDef]="column.columnDef">
+                        <th mat-header-cell *matHeaderCellDef>
+                            {{column.header}}
+                        </th>
+                        <td mat-cell *matCellDef="let row">
+                            {{column.cell(row)}}
+                        </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </mat-card>
+        </div>
+    </div>
+</div>

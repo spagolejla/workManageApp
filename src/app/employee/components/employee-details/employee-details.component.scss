@@ -1,0 +1,151 @@
+.table-container {
+    margin-top: 20px;
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-top: 1em;
+    height: 100%;
+}
+
+.back-button {
+    float: right;
+}
+
+.details-container {
+    height: 700px;
+    padding-top: 16px;
+}
+
+.card {
+    background-color: #fff;
+    margin-bottom: 30px;
+    border: none;
+}
+
+.card-user .image {
+    height: 110px;
+}
+
+.card .image {
+    width: 100%;
+    overflow: hidden;
+    height: 260px;
+    border-radius: 4px 4px 0 0;
+    position: relative;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.card .image img {
+    width: 100%;
+}
+
+.card-user .content {
+    min-height: 240px;
+}
+
+.card .content {
+    padding: 15px;
+}
+
+.card-user .author {
+    text-align: center;
+    text-transform: none;
+}
+
+.card .author {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.card-user .avatar.border-gray {
+    border-color: #eee;
+}
+
+.card-user .avatar {
+    width: 15%;
+    height: 15%;
+    border: 5px solid #fff;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.card .avatar {
+    overflow: hidden;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+img {
+    vertical-align: middle;
+}
+
+img {
+    border: 0;
+}
+
+.card-user .title {
+    line-height: 24px;
+}
+
+.card .title {
+    margin: 0;
+    color: #333;
+    font-weight: 300;
+}
+
+.h4,
+h4 {
+    font-size: 22px;
+    line-height: 30px;
+}
+
+a {
+    color: #23ccef;
+}
+
+.alert,
+.brand,
+.btn-simple,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+.navbar,
+.td-name,
+a,
+body,
+button.close,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+td {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-family: Roboto, helvetica neue, Arial, sans-serif;
+    font-weight: 400;
+}
+
+a {
+    color: #337ab7;
+    text-decoration: none;
+}
+
+a {
+    background-color: transparent;
+}
+
+.mat-tab-group {
+    margin-bottom: 48px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: gray;
+}

@@ -1,0 +1,76 @@
+<div class="dialog-container">
+  <h2 mat-dialog-title>{{data.title}}</h2>
+  <mat-dialog-content class="mat-typography">
+    <form [formGroup]="formGroup" [connectForm]="selectedEmployee$ | async">
+      <ng-template matStepLabel>Basic info</ng-template>
+      <mat-form-field class="field">
+        <input matInput placeholder="First name" formControlName="firstName" required>
+        <mat-error *ngIf="fControls.firstName.errors?.required"> First name is required</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Last name" formControlName="lastName" required>
+        <mat-error *ngIf="fControls.lastName.errors?.required">Last Name is required</mat-error>
+      </mat-form-field><br>
+      <mat-form-field class="field">
+        <input matInput placeholder="Email" formControlName="email">
+        <mat-error *ngIf="fControls.email.errors?.email"> Please enter valid email address</mat-error>
+        <mat-error *ngIf="fControls.email.errors?.required"> Email is required</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="number" matInput placeholder="Telephone" formControlName="telephone" required>
+        <mat-error *ngIf="fControls.telephone.errors?.required">Telephone is required</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="field">
+        <input matInput placeholder="Work position" formControlName="position" required>
+        <mat-error *ngIf="fControls.position.errors?.required"> Work position is required</mat-error>
+      </mat-form-field>
+      <mat-form-field class="field">
+        <input matInput placeholder="Salary per hour" formControlName="salaryPerHour" required type="number">
+        <mat-error *ngIf="fControls.salaryPerHour.errors?.required"> Salary is required</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="field">
+        <textarea matInput placeholder="Short description" formControlName="shortDescription" required></textarea>
+        <mat-error *ngIf="fControls.shortDescription.errors?.required"> Short Description is required</mat-error>
+      </mat-form-field>
+      <mat-form-field class="field">
+        <mat-label>Start work date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="startWorkDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <textarea matInput placeholder="AvatarURL" formControlName="avatarUrl"></textarea>
+        <mat-error *ngIf="fControls.avatarUrl.errors?.required"> AvatarURL is required</mat-error>
+      </mat-form-field> <a target="_blank" rel="noopener noreferrer" href="https://getavataaars.com/">Generate</a>
+
+      <br>
+      <!-- <mat-form-field class="field">
+        <input matInput type="password" placeholder="Password" formControlName="password" required>
+        <mat-error *ngIf="fControls.password.errors?.required"> Paasword is required</mat-error>
+        <mat-error *ngIf="fControls.password.errors?.minlength"> Must be at least 8 characters!</mat-error>
+        <mat-error *ngIf="fControls.password.errors?.hasNumber"> Must contain at least 1 number!</mat-error>
+        <mat-error *ngIf="fControls.password.errors?.hasCapitalCase"> Must contain at least 1 in Capital Case!</mat-error>
+        <mat-error *ngIf="fControls.password.errors?.hasSmallCase"> Must contain at least 1 Letter in Small Case!
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" placeholder="Confrim password" formControlName="confirmPassword" required>
+        <mat-error *ngIf="fControls.confirmPassword.errors?.required"> Password is required</mat-error>
+        <mat-error *ngIf="fControls.confirmPassword.errors?.NoPassswordMatch"> Password do not match</mat-error>
+      </mat-form-field> <br> -->
+      <mat-slide-toggle formControlName="active" color="primary">Is Active</mat-slide-toggle>
+      <br>
+      <br>
+      <br>
+      <br>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button  class="save-button" cdkFocusInitial (click)="save()">Save</button>
+  </mat-dialog-actions>
+</div>

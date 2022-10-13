@@ -1,0 +1,43 @@
+<div #currentRoute="value" [value]="currentRoute$ | async"></div>
+<div class="nav-menu-content">
+    <mat-nav-list>
+        <div _ class="logo">
+            <a class="simple-text">
+                <div class="logo-img">
+                    <img src="/assets/logo/full-logo.PNG">
+                </div>
+            </a>
+        </div>
+
+        <mat-nav-list>
+            <a mat-list-item class="sidenav-item single-item" [class.active] = "currentRoute.value == '/dashboard'" [routerLink]="['/dashboard']">
+                <i class="material-icons sidenav-icon">dashboard</i>
+                Dashboard</a>
+        </mat-nav-list>
+
+        <mat-nav-list>
+            <a mat-list-item class="sidenav-item single-item" [class.active] = "currentRoute.value == '/employee'"  [routerLink]="['/employee']">
+                <i class="material-icons sidenav-icon">people</i>
+                Employees</a>
+        </mat-nav-list>
+
+        <mat-nav-list>
+            <a mat-list-item class="sidenav-item single-item" [class.active] = "currentRoute.value == '/project'"  [routerLink]="['/project']">
+                <i class="material-icons sidenav-icon">business</i>
+                Projects</a>
+        </mat-nav-list>
+
+        <mat-nav-list>
+            <a mat-list-item class="sidenav-item single-item"  [class.active] = "currentRoute.value == '/task'" [routerLink]="['/task']">
+                <i class="material-icons sidenav-icon">list_alt</i>
+                Tasks</a>
+        </mat-nav-list>
+
+        <mat-nav-list>
+            <a mat-list-item class="sidenav-item single-item"  [class.active] = "currentRoute.value == '/timesheet'" [routerLink]="['/timesheet']">
+                <i class="material-icons sidenav-icon">payment</i>
+                Timesheets</a>
+        </mat-nav-list>
+        
+    </mat-nav-list>
+</div>

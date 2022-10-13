@@ -1,0 +1,188 @@
+.container-fluid {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.card {
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 14%);
+}
+.card {
+    border: 0;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    border-radius: 6px;
+    color: #333333;
+    background: #fff;
+    width: 100%;
+    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+}
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #eeeeee;
+    border-radius: 0.25rem;
+}
+.card {
+    font-size: 0.875rem;
+}
+
+.card-stats .card-header.card-header-icon, .card-stats .card-header.card-header-text {
+    text-align: right;
+}
+.card [class*=card-header-] {
+    margin: 0px 15px 0;
+    padding: 0;
+    position: relative;
+}
+.card .card-header {
+    z-index: 3 !important;
+}
+.card [class*=card-header-], .card[class*=bg-] {
+    color: #fff;
+}
+.card .card-header {
+    border-bottom: none;
+    background: transparent;
+}
+.card-header:first-child {
+    border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+}
+.card-header {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: #fff;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.card-icon {
+    border-radius: 3px;
+    background-color: #999999;
+    padding: 15px;
+    margin-top: -20px;
+    margin-right: 15px;
+    float: left;
+    color: white
+}
+
+.icon-color1 {
+    box-shadow: 0 4px 20px 0px rgb(0 0 0 / 14%), 0 7px 10px -5px rgb(255 152 0 / 40%);
+    background: linear-gradient(60deg, #ffa726, #fb8c00);
+}
+
+.icon-color2 {
+    box-shadow: 0 4px 20px 0px rgb(0 0 0 / 14%), 0 7px 10px -5px rgb(76 175 80 / 40%);
+    background: linear-gradient(60deg, #66bb6a, #43a047);
+}
+
+.icon-color3 {
+    box-shadow: 0 4px 20px 0px rgb(0 0 0 / 14%), 0 7px 10px -5px rgb(0 188 212 / 40%);
+    background: linear-gradient(60deg, #26c6da, #00acc1);
+}
+
+.card-stats .card-header.card-header-icon i {
+    font-size: 36px;
+    line-height: 56px;
+    width: 56px;
+    height: 56px;
+    text-align: center;
+}
+.card .card-header.card-header-icon i, .card .card-header.card-header-text i {
+    width: 33px;
+    height: 33px;
+    text-align: center;
+    line-height: 33px;
+}
+.card-stats .card-header .card-category:not([class*=text-]) {
+    color: #999999;
+    font-size: 14px;
+}
+.card-stats .card-header.card-header-icon .card-title, .card-stats .card-header.card-header-text .card-title, .card-stats .card-header.card-header-icon .card-category, .card-stats .card-header.card-header-text .card-category {
+    margin: 0;
+}
+.card-stats .card-header .card-icon + .card-title, .card-stats .card-header .card-icon + .card-category {
+    padding-top: 10px;
+}
+.card-stats .card-header .card-category {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.card .card-header .card-category {
+    margin: 0;
+}
+.card [class*=card-header-] .author a, .card [class*=card-header-] .stats, .card [class*=card-header-] .card-category, .card [class*=card-header-] .card-description, .card[class*=bg-] .author a, .card[class*=bg-] .stats, .card[class*=bg-] .card-category, .card[class*=bg-] .card-description {
+    color: rgba(255, 255, 255, 0.8);
+}
+.card .card-category:not([class*=text-]) {
+    color: #999999;
+}
+.card .card-category {
+    margin-top: 10px;
+}
+
+.card-category, .card-title {
+    text-align: right;
+}
+.card-title {
+color: #3C4858;
+font-weight: 300;
+font-size: 30px;
+}
+.card-stats .card-header + .card-footer {
+    border-top: 1px solid #eee;
+    margin-top: 14px;
+}
+.card .card-body + .card-footer, .card .card-footer {
+    padding: 0;
+    padding-top: 10px;
+    margin: 0 15px 10px;
+    border-radius: 0;
+    justify-content: space-between;
+    align-items: center;
+}
+.card .card-footer {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: 0;
+}
+
+.header-icon {
+    font-size: 30px !important; 
+}
+
+.card-icon {
+    padding: 25px;
+}
+
+.module-link {
+    text-decoration: none;
+    color:  #999999;
+    margin-left: 5px;
+}
+
+/* Structure */
+table {
+    width: 100%;
+    box-shadow: none;
+  }
+
+  mat-card-title {
+    font-weight: 300 !important;
+    color: #999999;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+
+
+  

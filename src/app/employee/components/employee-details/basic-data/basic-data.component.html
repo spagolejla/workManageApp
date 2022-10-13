@@ -1,0 +1,44 @@
+<div #employee="value" [value]="selectedEmployee$ | async"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-2">
+            <h2>Email: </h2>
+        </div>
+        <div class="col-3">
+            <h3> {{employee.value?.email}} </h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            <h2>Phone: </h2>
+        </div>
+        <div class="col-3">
+            <h3> {{employee.value?.telephone}}</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            <h2>Salary (h): </h2>
+        </div>
+        <div class="col-3">
+            <h3> {{employee.value?.salaryPerHour + ' BAM'}} </h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            <h2>Start date: </h2>
+        </div>
+        <div class="col-3">
+            <h3> {{employee.value?.startWorkDate | date: 'short'}} </h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            <h2>Acive: </h2>
+        </div>
+        <div class="col-3">
+            <h3> {{employee.value?.active | yesNo}} </h3>
+        </div>
+    </div>
+ 
+</div>
