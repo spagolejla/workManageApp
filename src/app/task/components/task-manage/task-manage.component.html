@@ -1,11 +1,11 @@
 <div class="dialog-container">
     <h2 mat-dialog-title>{{data.title}}</h2>
     <mat-dialog-content class="mat-typography">
-        <form [formGroup]="formGroup" [connectForm]="selectedProject$ | async">
+        <form [formGroup]="formGroup" [connectForm]="selectedTask$ | async">
             <div class="row">
                 <mat-form-field>
-                    <input matInput placeholder="Name" formControlName="name" required>
-                    <mat-error *ngIf="fControls.name.errors?.required"> Name is required</mat-error>
+                    <input matInput placeholder="Title" formControlName="title" required>
+                    <mat-error *ngIf="fControls.title.errors?.required"> Title is required</mat-error>
                 </mat-form-field>
             </div>
 
@@ -13,32 +13,6 @@
                 <mat-form-field>
                     <textarea matInput placeholder="Description" formControlName="description" required></textarea>
                     <mat-error *ngIf="fControls.description.errors?.required"> Description is required</mat-error>
-                </mat-form-field>
-            </div>
-
-
-            <div class="row">
-                
-             <mat-form-field>
-                <mat-select matSelect formControlName="status"  placeholder="Status" class="dropdown-input" required>
-                  <mat-option *ngFor="let item of statusItems" [value]="item.id">{{item.name}}</mat-option>
-                  
-                </mat-select>
-                <mat-error *ngIf="fControls.status.errors?.required">Course field is required</mat-error>
-              </mat-form-field>
-            </div>
-
-            <div class="row">
-                <mat-form-field>
-                    <input matInput placeholder="Budget Amount" formControlName="budgetAmount" required>
-                    <mat-error *ngIf="fControls.budgetAmountrrors?.required"> Budget amount is required</mat-error>
-                </mat-form-field>
-            </div>
-
-            <div class="row">
-                <mat-form-field>
-                    <input matInput placeholder="Location" formControlName="location" required>
-                    <mat-error *ngIf="fControls.location?.required"> Location is required</mat-error>
                 </mat-form-field>
             </div>
 
@@ -61,6 +35,47 @@
                     <mat-datepicker #pickerEnd></mat-datepicker>
                 </mat-form-field>
             </div>
+
+            <div class="row">
+                <mat-form-field>
+                    <mat-select matSelect formControlName="project" placeholder="Project" class="dropdown-input" required>
+                        <mat-option *ngFor="let item of (projects$ | async)" [value]="item">{{item.name}}</mat-option>
+
+                    </mat-select>
+                    <mat-error *ngIf="fControls.project.errors?.required">Course field is required</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="row">  
+                <mat-form-field>
+                   <mat-select matSelect formControlName="assigner"  placeholder="Assigner" class="dropdown-input" required>
+                     <mat-option *ngFor="let item of (assigners$ | async) " [value]="item">{{item.firstName + '' + item.lastName}}</mat-option>
+                     
+                   </mat-select>
+                   <mat-error *ngIf="fControls.assigner.errors?.required">Course field is required</mat-error>
+                 </mat-form-field>
+               </div>
+
+               <div class="row">  
+                <mat-form-field>
+                   <mat-select matSelect formControlName="priority"  placeholder="Priority" class="dropdown-input" required>
+                     <mat-option *ngFor="let item of priorityItems" [value]="item.id">{{item.name}}</mat-option>
+                     
+                   </mat-select>
+                   <mat-error *ngIf="fControls.priority.errors?.required">Course field is required</mat-error>
+                 </mat-form-field>
+               </div>
+
+               <div class="row">  
+                <mat-form-field>
+                   <mat-select matSelect formControlName="status"  placeholder="Status" class="dropdown-input" required>
+                     <mat-option *ngFor="let item of statusItems" [value]="item.id">{{item.name}}</mat-option>
+                     
+                   </mat-select>
+                   <mat-error *ngIf="fControls.status.errors?.required">Course field is required</mat-error>
+                 </mat-form-field>
+               </div>
+
         </form>
     </mat-dialog-content>
     <mat-dialog-actions align="end">

@@ -5,11 +5,13 @@ import { MaterialDesignModule } from '../shared/modules/material-design.module';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TimesheetComponent } from './components/timesheet/timesheet.component';
+import { TimesheetDetailsComponent } from './components/timesheet-details/timesheet-details.component';
 
 
 @NgModule({
   declarations: [
     TimesheetComponent,
+    TimesheetDetailsComponent,
   ],
   imports: [
     CommonModule,

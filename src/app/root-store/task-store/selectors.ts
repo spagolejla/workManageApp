@@ -22,7 +22,7 @@ export const selectFilteredTasks = createSelector(
     selectTasks,
     (searchValue, tasks) => {
         if (searchValue != "") {
-            return tasks.filter(task => task.name?.toLocaleLowerCase().indexOf(searchValue?.toLocaleLowerCase()) != -1)
+            return tasks.filter(task => task.title?.toLocaleLowerCase().indexOf(searchValue?.toLocaleLowerCase()) != -1)
         }
         return tasks;
     }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TaskState } from 'src/app/root-store/task-store';
 import * as taskActions from '../../../root-store/task-store/actions';
 import * as taskSelectors from '../../../root-store/task-store/selectors';
+import * as projectActions from '../../../root-store/projects-store/actions';
+import * as employeeActions from '../../../root-store/emloyees-store/actions';
 
 import { Store } from '@ngrx/store';
 import { Task } from '../../models/task.model';
@@ -9,6 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { TaskManageComponent } from '../task-manage/task-manage.component';
 import { Router } from '@angular/router';
 import { TaskStatus } from '../../models/task-status.model';
+import { Priority } from '../../models/task-priority.enum';
 
 
 @Component({
@@ -21,6 +24,7 @@ export class TaskComponent implements OnInit {
   tasks$ = this.store$.select(taskSelectors.selectFilteredTasks);
 
   TaskStatus = TaskStatus;
+  Priority = Priority;
   columns = [
     {
       columnDef: 'taskNo',
@@ -83,6 +87,8 @@ export class TaskComponent implements OnInit {
 
   ngOnInit(): void {
     this.store$.dispatch(taskActions.loadDataRequest());
+    this.store$.dispatch(projectActions.loadDataRequest());
+    this.store$.dispatch(employeeActions.loadDataRequest());
   }
 
   applyFilter(event: Event) {

@@ -20,7 +20,7 @@ export class TimesheetEffects {
     loadTimesheets$ = createEffect(() =>
         this.actions$.pipe(
             ofType(ActionTypes.LOAD_DATA_REQUEST),
-            switchMap(() => this.timesheetService.getTimesheets().pipe(
+            switchMap(action => this.timesheetService.getTimesheets(action['date']).pipe(
                 map(timesheets => loadDataSuccess({ timesheets })),
                 catchError(() => of(noAction))
             ))
@@ -35,7 +35,7 @@ export class TimesheetEffects {
                     concatMap((timesheet) => {
                         return [
                             timesheetActions.saveTimesheetSuccess({ timesheet }),
-                            timesheetActions.loadDataRequest(),
+                            timesheetActions.loadDataRequest({date: new Date()}),
                         ]
                     }),
                     catchError(error =>
@@ -54,7 +54,7 @@ export class TimesheetEffects {
                     concatMap((timesheet) => {
                         return [
                             timesheetActions.updateTimesheetSuccess({ timesheet }),
-                            timesheetActions.loadDataRequest(),
+                            timesheetActions.loadDataRequest({date: new Date()}),
                         ]
                     }),
                     catchError(error =>
@@ -73,7 +73,7 @@ export class TimesheetEffects {
                     concatMap((timesheet) => {
                         return [
                             timesheetActions.deleteTimesheetSuccess(),
-                            timesheetActions.loadDataRequest(),
+                            timesheetActions.loadDataRequest({date: new Date()}),
                         ]
                     }),
                     catchError(error =>

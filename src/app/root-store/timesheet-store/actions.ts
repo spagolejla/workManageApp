@@ -16,7 +16,7 @@ export enum ActionTypes {
     ERROR  = "[Timesheet] ERROR Action",
 }
 
-export const loadDataRequest = createAction(ActionTypes.LOAD_DATA_REQUEST);
+export const loadDataRequest = createAction(ActionTypes.LOAD_DATA_REQUEST, props<  { date: Date | null } >());
 export const loadDataSuccess = createAction(ActionTypes.LOAD_DATA_SUCCESS, props<  { timesheets: Array<Timesheet> } >());
 export const setSearchValue = createAction(ActionTypes.SET_SEARCH_VALUE, props<  { searchValue: string } >());
 export const setSelectedTimesheet = createAction(ActionTypes.SET_SELECTED_TIMESHEET, props<  { timesheet: any } >());

@@ -18,7 +18,7 @@ export class TimesheetService {
   URL: string = 'api/v1/timesheet/';
   constructor(private httpClient: HttpClient) { }
 
-  getTimesheets(): Observable<Array<Timesheet>> {
+  getTimesheets(date: Date): Observable<Array<Timesheet>> {
 
     return of(this.timesheetsTestData);
   }

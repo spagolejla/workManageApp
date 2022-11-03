@@ -6,9 +6,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { TaskState } from 'src/app/root-store/task-store';
 import * as taskSelectors from '../../../root-store/task-store/selectors';
+import * as employeeSelectors from '../../../root-store/emloyees-store/selectors';
+import * as projectSelectors from '../../../root-store/projects-store/selectors';
+
 import * as taskActions from '../../../root-store/task-store/actions';
 import { Task } from '../../models/task.model';
 import { TaskStatus } from '../../models/task-status.model';
+import { Priority } from '../../models/task-priority.enum';
+import { Observable, of } from 'rxjs';
+import { Employee } from 'src/app/employee/models/employee.model';
+import { Project } from 'src/app/project/models/project.model';
 
 @Component({
   selector: 'app-task-manage',
@@ -22,11 +29,20 @@ export class TaskManageComponent implements OnInit {
   formGroup!: FormGroup;
 
   selectedTask$ = this.store$.select(taskSelectors.selectedTaskFromState);
+  assigners$: Observable<Employee[]> = this.store$.select(employeeSelectors.selectEmployees); 
+  projects$: Observable<Project[]>  = this.store$.select(projectSelectors.selectProjects);
 
   statusItems = (Object.keys(TaskStatus) as Array<keyof typeof TaskStatus>)
   .filter(key => isNaN(Number(key)) && TaskStatus[key] != 0)
   .map(p => ({
     id: TaskStatus[p],
+    name: p
+  }));
+
+  priorityItems = (Object.keys(Priority) as Array<keyof typeof Priority>)
+  .filter(key => isNaN(Number(key)) && Priority[key] != 0)
+  .map(p => ({
+    id: Priority[p],
     name: p
   }));
 
@@ -49,11 +65,12 @@ export class TaskManageComponent implements OnInit {
 
     this.formGroup = this.fb.group(
       {
-        name: ["", Validators.required],
+        title: ["", Validators.required],
         description: ["", Validators.required],
         status: ["", Validators.required],
-        location: ["", Validators.required],
-        budgetAmount: [null],
+        priority: ["", Validators.required],
+        project: [null],
+        assigner: [null],
         startDate: [""],
         endDate: [""],
       }
@@ -69,13 +86,15 @@ export class TaskManageComponent implements OnInit {
       const formRawData = this.formGroup.getRawValue();
       const task = {
         id: this.taskId ? this.taskId : undefined,
-        name: formRawData.name,
-        status: formRawData.status,
+        taskNo: formRawData.taskNo,
+        title: formRawData.title,
         description: formRawData.description,
         startDate: formRawData.startDate,
         endDate: formRawData.endDate,
-        location: formRawData.location,
-        budgetAmount: formRawData.budgetAmount,
+        assigner: formRawData.assigner,
+        project: formRawData.project,
+        status: formRawData.status,
+        priority: formRawData.priority,
       } as Task;
 
       if (this.taskId != "" && this.taskId != undefined) {
