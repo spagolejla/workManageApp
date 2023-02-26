@@ -1,5 +1,8 @@
 export enum TimesheetStatus {
     Undefined,
+    Open,
     Submited,
-    Approved //...
+    Approved,
+    Rejected,
+    Edited, 
 }

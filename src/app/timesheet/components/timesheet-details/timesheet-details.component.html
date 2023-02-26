@@ -1,1 +1,32 @@
-<p>timesheet-details works!</p>
+<!-- <div id="spinnerWrapper">
+    <mat-spinner *ngIf="!hideSpinner"></mat-spinner>
+  </div> -->
+
+<div #timesheet="value" [value]="selectedTimesheet$ | async"></div>
+
+<div class="table-container">
+    <mat-card class="mat-elevation-z3">
+        <div style="margin-bottom:15px;">
+            <h1 style="display:inline;"> Timesheet details </h1>
+            <button mat-button class="back-button" (click)="goBack()">Back</button>
+        </div>
+        <div class="row">
+            <h1 class="col"> Date: {{timesheet.value.date | date: 'shortDate'}} </h1>
+            <div class="col-1 timesheetStatus ml-3  color-{{timesheet.value.status}} tx-center">
+                <span>{{TimesheetStatus[timesheet.value.status]}}</span>
+            </div>
+        </div>
+        <div class="row">
+            <h2 style="display:inline;"> Work Periods </h2>
+            <work-periods-list [workPeriods]="timesheet.value.workPeriods"></work-periods-list>
+        </div>
+        <div class="row mt-4" >
+            <h2 style="display:inline;"> Timesheet action history </h2>  
+            <timesheet-actions [workPeriods]="timesheet.value.actions"></timesheet-actions>
+            <button mat-button class="add-button" >Add New Action</button>
+        </div>
+    </mat-card>
+
+
+
+</div>

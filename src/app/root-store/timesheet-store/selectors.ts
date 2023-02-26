@@ -22,7 +22,7 @@ export const selectFilteredTimesheets = createSelector(
     selectTimesheets,
     (searchValue, timesheets) => {
         if (searchValue != "") {
-            return timesheets.filter(timesheet => timesheet.name?.toLocaleLowerCase().indexOf(searchValue?.toLocaleLowerCase()) != -1)
+            return timesheets.filter(timesheet => timesheet.user.name?.toLocaleLowerCase().indexOf(searchValue?.toLocaleLowerCase()) != -1)
         }
         return timesheets;
     }

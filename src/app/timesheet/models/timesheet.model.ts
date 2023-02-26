@@ -1,14 +1,14 @@
 import { Item } from "src/app/shared/models/item.model";
+import { TimesheetAction } from "./timesheet-action.model";
+import { TimesheetStatus } from "./timesheet-status.model";
+import { WorkPeriod } from "./work-period.model";
 
 export class Timesheet {
     id: string | undefined;
     date: Date | undefined;
-    // title: string | undefined;
-    // description: string | undefined;
-    // startDate?: Date | undefined;
-    // endDate?: Date | undefined;
-    // assigners?: Array<Item> | undefined;
-    // project: Item | undefined;
-    // status: TaskStatus | undefined;
-    // priority: Priority | undefined;
+    user: Item | undefined;
+    status: TimesheetStatus | undefined;
+    totalHours: number | undefined;
+    workPeriods: Array<WorkPeriod> | undefined;
+    actions: Array<TimesheetAction> | undefined;
 }
