@@ -9,6 +9,7 @@ import * as projectSelectors from '../../../root-store/projects-store/selectors'
 import * as projectActions from '../../../root-store/projects-store/actions';
 import { Project } from '../../models/project.model';
 import { ProjectStatus } from '../../models/project-status-model';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-project-manage',
@@ -68,7 +69,7 @@ export class ProjectManageComponent implements OnInit {
     if (this.formGroup.valid) {
       const formRawData = this.formGroup.getRawValue();
       const project = {
-        id: this.projectId ? this.projectId : undefined,
+        id: this.projectId ? this.projectId : uuidv4(),
         name: formRawData.name,
         status: formRawData.status,
         description: formRawData.description,

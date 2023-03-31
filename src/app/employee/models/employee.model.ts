@@ -12,6 +12,4 @@ export class Employee {
     active: boolean | undefined;
     picture?: string = 'no-picture.png';
     avatarUrl?: string;
-
-    //picture, cv description, position, 
 }

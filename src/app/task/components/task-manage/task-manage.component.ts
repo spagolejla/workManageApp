@@ -16,6 +16,7 @@ import { Priority } from '../../models/task-priority.enum';
 import { Observable, of } from 'rxjs';
 import { Employee } from 'src/app/employee/models/employee.model';
 import { Project } from 'src/app/project/models/project.model';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-task-manage',
@@ -85,18 +86,19 @@ export class TaskManageComponent implements OnInit {
     if (this.formGroup.valid) {
       const formRawData = this.formGroup.getRawValue();
       const task = {
-        id: this.taskId ? this.taskId : undefined,
+        id: this.taskId ? this.taskId : uuidv4(),
         taskNo: formRawData.taskNo,
         title: formRawData.title,
         description: formRawData.description,
         startDate: formRawData.startDate,
         endDate: formRawData.endDate,
-        assigner: formRawData.assigner,
+        assigner: {id: formRawData.assigner.id, name: formRawData.assigner.firstName + ' ' + formRawData.assigner.lastName},
         project: formRawData.project,
         status: formRawData.status,
         priority: formRawData.priority,
       } as Task;
 
+      console.log(formRawData);
       if (this.taskId != "" && this.taskId != undefined) {
         this.store$.dispatch(taskActions.updateTaskRequest({ task }))
       } else {

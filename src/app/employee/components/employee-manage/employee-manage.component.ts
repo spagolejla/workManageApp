@@ -9,6 +9,8 @@ import * as employeeSelectors from '../../../root-store/emloyees-store/selectors
 import * as employeeActions from '../../../root-store/emloyees-store/actions';
 
 import { Employee } from '../../models/employee.model';
+import { v4 as uuidv4 } from 'uuid';
+
 
 @Component({
   selector: 'app-employee-manage',
@@ -84,7 +86,7 @@ export class EmployeeManageComponent implements OnInit {
     if (this.formGroup.valid) {
       const formRawData = this.formGroup.getRawValue();
       const employee = {
-        id: this.employeeId? this.employeeId : undefined,
+        id: this.employeeId? this.employeeId :  uuidv4(),
         firstName: formRawData.firstName,
         lastName: formRawData.lastName,
         email: formRawData.email,
