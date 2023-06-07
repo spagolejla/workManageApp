@@ -8,6 +8,7 @@ import { TimesheetComponent } from './components/timesheet/timesheet.component';
 import { TimesheetDetailsComponent } from './components/timesheet-details/timesheet-details.component';
 import { WorkPeriodsListComponent } from './components/work-periods-list/work-periods-list.component';
 import { TimesheetActionsComponent } from './components/timesheet-actions/timesheet-actions.component';
+import { TimesheetActionManageComponent } from './components/timesheet-action-manage/timesheet-action-manage.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { TimesheetActionsComponent } from './components/timesheet-actions/timesh
     TimesheetDetailsComponent,
     WorkPeriodsListComponent,
     TimesheetActionsComponent,
+    TimesheetActionManageComponent,
   ],
   imports: [
     CommonModule,

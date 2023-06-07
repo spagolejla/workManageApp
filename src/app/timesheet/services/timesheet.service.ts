@@ -1,7 +1,8 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, of } from 'rxjs';
 import { Item } from 'src/app/shared/models/item.model';
+import { environment } from 'src/environments/environment';
 import { TimesheetAction } from '../models/timesheet-action.model';
 import { TimesheetStatus } from '../models/timesheet-status.model';
 import { Timesheet } from '../models/timesheet.model';
@@ -142,12 +143,14 @@ export class TimesheetService {
       actions: []
     },
   ];
-  URL: string = 'api/v1/timesheet/';
+  URL: string = `${environment.apiUrl}/timesheet`;
+
   constructor(private httpClient: HttpClient) { }
 
   getTimesheets(date: Date): Observable<Array<Timesheet>> {
-
-    return of(this.timesheetsTestData);
+    const options = date ?
+   { params: new HttpParams().set('date', date.toDateString()) } : {};
+    return this.httpClient.get<Array<Timesheet>>(`${this.URL}/getByDate`, options)
   }
 
   deleteTimesheet(id: string): Observable<boolean> {
@@ -177,19 +180,8 @@ export class TimesheetService {
   }
 
   updateTimesheet(timesheet: Timesheet): Observable<Timesheet> {
-    this.timesheetsTestData = Object.assign([], this.timesheetsTestData);
-
-    const index = this.timesheetsTestData.findIndex(object => {
-      return object.id === timesheet.id;
-    }); //  1
-
-    if (index !== -1) {
-      this.timesheetsTestData[index] = timesheet;
-    }
-
-    return of(timesheet);
-    // return this.httpClient.put(this.URL, timesheet)
-    //   .pipe(map((response: any) => { return response; }));
+    return this.httpClient.put(this.URL, timesheet)
+      .pipe(map((response: any) => { return response; }));
   }
 
 }
