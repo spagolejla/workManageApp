@@ -1,7 +1,7 @@
 export enum TaskStatus {
     Undefined,
     Created,
-    Open,
-    Closed,
+    InProgress,
+    Stopped,
     Finished
 }

@@ -42,7 +42,7 @@
                         <mat-option *ngFor="let item of (projects$ | async)" [value]="item">{{item.name}}</mat-option>
 
                     </mat-select>
-                    <mat-error *ngIf="fControls.project.errors?.required">Course field is required</mat-error>
+                    <mat-error *ngIf="fControls.project.errors?.required">Project is required</mat-error>
                 </mat-form-field>
             </div>
 
@@ -52,7 +52,7 @@
                      <mat-option *ngFor="let item of (assigners$ | async) " [value]="item">{{item.firstName + '' + item.lastName}}</mat-option>
                      
                    </mat-select>
-                   <mat-error *ngIf="fControls.assigner.errors?.required">Course field is required</mat-error>
+                   <mat-error *ngIf="fControls.assigner.errors?.required">Assigner field is required</mat-error>
                  </mat-form-field>
                </div>
 
@@ -62,19 +62,19 @@
                      <mat-option *ngFor="let item of priorityItems" [value]="item.id">{{item.name}}</mat-option>
                      
                    </mat-select>
-                   <mat-error *ngIf="fControls.priority.errors?.required">Course field is required</mat-error>
+                   <mat-error *ngIf="fControls.priority.errors?.required">Priority is required</mat-error>
                  </mat-form-field>
                </div>
-
+<!-- 
                <div class="row">  
                 <mat-form-field>
                    <mat-select matSelect formControlName="status"  placeholder="Status" class="dropdown-input" required>
                      <mat-option *ngFor="let item of statusItems" [value]="item.id">{{item.name}}</mat-option>
                      
                    </mat-select>
-                   <mat-error *ngIf="fControls.status.errors?.required">Course field is required</mat-error>
+                   <mat-error *ngIf="fControls.status.errors?.required">Status is required</mat-error>
                  </mat-form-field>
-               </div>
+               </div> -->
 
         </form>
     </mat-dialog-content>

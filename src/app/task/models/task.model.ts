@@ -7,6 +7,7 @@ export class Task {
     taskNo: number | undefined;
     title: string | undefined;
     description: string | undefined;
+    createdDate?: Date | undefined;
     startDate?: Date | undefined;
     endDate?: Date | undefined;
     assigner?: Item | undefined;

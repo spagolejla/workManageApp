@@ -68,7 +68,7 @@ export class TaskManageComponent implements OnInit {
       {
         title: ["", Validators.required],
         description: ["", Validators.required],
-        status: ["", Validators.required],
+        status: [""],
         priority: ["", Validators.required],
         project: [null],
         assigner: [null],
@@ -90,15 +90,15 @@ export class TaskManageComponent implements OnInit {
         taskNo: formRawData.taskNo,
         title: formRawData.title,
         description: formRawData.description,
+        createdDate: new Date(),
         startDate: formRawData.startDate,
         endDate: formRawData.endDate,
         assigner: {id: formRawData.assigner.id, name: formRawData.assigner.firstName + ' ' + formRawData.assigner.lastName},
         project: formRawData.project,
-        status: formRawData.status,
+        status: this.taskId ? formRawData.status : TaskStatus.Created,
         priority: formRawData.priority,
       } as Task;
 
-      console.log(formRawData);
       if (this.taskId != "" && this.taskId != undefined) {
         this.store$.dispatch(taskActions.updateTaskRequest({ task }))
       } else {
