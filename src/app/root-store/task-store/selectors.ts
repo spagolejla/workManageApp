@@ -28,6 +28,13 @@ export const selectFilteredTasks = createSelector(
     }
 );
 
+export const selectFilteredTasksDesc = createSelector(
+    selectFilteredTasks,
+    (tasks) => {
+        return [...tasks].sort((a, b) => b.taskNo - a.taskNo);
+    }
+);
+
 export const selectedTask = createSelector(
     selectTasks,
     selectRouteParams,

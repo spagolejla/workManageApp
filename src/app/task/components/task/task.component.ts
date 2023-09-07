@@ -126,7 +126,6 @@ export class TaskComponent implements OnInit {
   }
 
   openDetails(task: Task) {
-
     this.router.navigate(['/task/details/'+ task.id])
   }
 
