@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <div class="row">
+    <div class="row" *ngIf="dashboardData$ | async as dashboardData">
         <div class="col">
             <div class="card card-stats">
                 <div class="card-header">
@@ -8,12 +8,13 @@
                     </div>
                     <p class="card-category">Number of active tasks:</p>
                     <h3 class="card-title">
-                        50 / 200
+                        {{ dashboardData.numberOfActiveTasks + " / " + dashboardData.numberOfTasks}}
                     </h3>
                 </div>
                 <div class="card-footer">
                     <div class="stats">
-                        <a class="module-link" href="javascript:void(0)">Open task module</a>
+                        <a class="module-link" href="javascript:void(0)" (click)="openModule('/task')">Open task
+                            module</a>
                     </div>
                 </div>
             </div>
@@ -26,12 +27,13 @@
                     </div>
                     <p class="card-category">Number of open projects:</p>
                     <h3 class="card-title">
-                        20 / 150
+                        {{ dashboardData.numberOfOpenProjects + " / " + dashboardData.numberOfProjects}}
                     </h3>
                 </div>
                 <div class="card-footer">
                     <div class="stats">
-                        <a class="module-link" href="javascript:void(0)">Open project module</a>
+                        <a class="module-link" href="javascript:void(0)" (click)="openModule('/project')">Open project
+                            module</a>
                     </div>
                 </div>
             </div>
@@ -44,12 +46,13 @@
                     </div>
                     <p class="card-category">Active employees:</p>
                     <h3 class="card-title">
-                        50 / 100
+                        {{ dashboardData.numberOfActiveEmployees + " / " + dashboardData.numberOfEmployees}}
                     </h3>
                 </div>
                 <div class="card-footer">
                     <div class="stats">
-                        <a class="module-link" href="javascript:void(0)">Open employee module</a>
+                        <a class="module-link" href="javascript:void(0)" (click)="openModule('/employee')">Open employee
+                            module</a>
                     </div>
                 </div>
             </div>

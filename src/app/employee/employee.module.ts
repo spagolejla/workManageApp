@@ -8,6 +8,7 @@ import { MaterialDesignModule } from '../shared/modules/material-design.module';
 import { SharedModule } from '../shared/shared.module';
 import { BasicDataComponent } from './components/employee-details/basic-data/basic-data.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 
 
@@ -17,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     EmployeeDetailsComponent,
     EmployeeManageComponent,
     BasicDataComponent,
+    UserProfileComponent,
   ],
   imports: [
     CommonModule,
@@ -26,7 +28,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule 
   ],
   entryComponents: [
-    EmployeeManageComponent
+    EmployeeManageComponent,
+    UserProfileComponent
   ]
 })
 export class EmployeeModule { }

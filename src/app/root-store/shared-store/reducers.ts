@@ -10,6 +10,11 @@ const deviceReducer = createReducer(
     tmpState.loggedInUser = user
     return tmpState;
   }),
+  on(actions.loadDashboardDataSuccess, (state: State, { dashboardData }) => {
+    const tmpState = { ...state };
+    tmpState.dashboardData = dashboardData
+    return tmpState;
+  }),
 );
 
 export function reducer(state: State | undefined, action: Action) {

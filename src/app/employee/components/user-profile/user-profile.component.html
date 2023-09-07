@@ -1,0 +1,61 @@
+<div class="dialog-container" *ngIf="loggedUser$ | async as loggedUser">
+    <h2 mat-dialog-title>Edit profile</h2>
+    <mat-dialog-content class="mat-typography">
+        <form [formGroup]="formGroup" [connectForm]="loggedUser">
+            <ng-template matStepLabel>Basic info</ng-template>
+            <div class="center-content">
+                <img class="d-flex justify-self-ceneter" alt="" src="{{this.formGroup.get('avatarUrl')?.value}}"
+                    width="200" height="90" />
+            </div>
+            <mat-form-field>
+                <textarea matInput placeholder="AvatarURL" formControlName="avatarUrl"></textarea>
+                <mat-error *ngIf="fControls.avatarUrl.errors?.required"> AvatarURL is required</mat-error>
+            </mat-form-field> <a target="_blank" rel="noopener noreferrer" href="https://getavataaars.com/">Generate</a>
+            <br>
+            <mat-form-field>
+                <input type="text" matInput placeholder="Telephone" formControlName="telephone" required>
+                <mat-error *ngIf="fControls.telephone.errors?.required">Telephone is required</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="field">
+                <input matInput placeholder="Work position" formControlName="position" required>
+                <mat-error *ngIf="fControls.position.errors?.required"> Work position is required</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="field">
+                <textarea matInput placeholder="Short description" formControlName="shortDescription"
+                    required></textarea>
+                <mat-error *ngIf="fControls.shortDescription.errors?.required"> Short Description is
+                    required</mat-error>
+            </mat-form-field>
+            <br>
+            <button mat-button class="save-button" cdkFocusInitial (click)="passwordToggle()">Change password</button>
+            <div *ngIf="changePassword">
+                <mat-form-field class="field">
+                    <input matInput type="password" placeholder="Old Password" formControlName="oldPassword">
+                    <mat-error *ngIf="fControls.oldPassword.errors?.required"> Paasword is required</mat-error>
+                    <mat-error *ngIf="fControls.oldPassword.errors?.invalidOldPassword">Invalid old!</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="field">
+                    <input matInput type="password" placeholder="New Password" formControlName="newPassword">
+                    <mat-error *ngIf="fControls.newPassword.errors?.required"> New paasword is required</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input matInput type="password" placeholder="Confrim password" formControlName="confirmPassword">
+                    <mat-error *ngIf="fControls.confirmPassword.errors?.required"> Password is required</mat-error>
+                    <mat-error *ngIf="fControls.confirmPassword.errors?.passwordMismatch"> Password do not match</mat-error>
+                </mat-form-field> <br>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+        </form>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-button class="save-button" cdkFocusInitial (click)="save(loggedUser)">Save</button>
+    </mat-dialog-actions>
+</div>

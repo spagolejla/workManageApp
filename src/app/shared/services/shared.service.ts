@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
+import { DashboardData } from '../models/dashboard-data.model';
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
- // private userMenuOpened$ = new BehaviorSubject<boolean>(false);
   private navMenuOpened$ = new BehaviorSubject<boolean>(true);
 
-  constructor() { }
+  URL: string = `${environment.apiUrl}/task`;
+  constructor(private httpClient: HttpClient) { }
+
 
   onNavMenuToggle(): Observable<boolean> {
     return this.navMenuOpened$.asObservable();
@@ -18,8 +22,6 @@ export class SharedService {
     return of([]);
   }
 
-
-
   navMenuToggle() {
     this.navMenuOpened$.next(!this.navMenuOpened$.value);
   }
@@ -28,31 +30,7 @@ export class SharedService {
     this.navMenuOpened$.next(false);
   }
 
-
-  // onUserMenuToggle(): Observable<boolean> {
-  //   return this.userMenuOpened$.asObservable();
-  // }
-
-  // openUserMenu() {
-  //   this.userMenuOpened$.next(true);
-  // }
-
-  // closeUserMenu() {
-  //   this.userMenuOpened$.next(false);
-  // }
-
-  
-
-
-  // onUserProfileToggle(): Observable<boolean> {
-  //   return this.userMenuOpened$.asObservable();
-  // }
-
-  // openUserProfile() {
-  //   this.userMenuOpened$.next(true);
-  // }
-
-  // closeUserProfile() {
-  //   this.userMenuOpened$.next(false);
-  // }
+  getDashboardData(): Observable<DashboardData> {
+    return this.httpClient.get<DashboardData>(this.URL + '/dashboard-data');
+  }
 }

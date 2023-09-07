@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { MenuItem, TreeNode } from 'primeng/api';
-import { selectCurrentRoute, selectUrl } from 'src/app/root-store/router-selectors';
+import { UserProfileComponent } from 'src/app/employee/components/user-profile/user-profile.component';
+import { selectUrl } from 'src/app/root-store/router-selectors';
 declare const $: any;
 declare interface RouteInfo {
     path: string;
@@ -27,12 +28,8 @@ export const ROUTES: RouteInfo[] = [
 export class NavMenuComponent implements OnInit {
 
   currentRoute$ = this.store$.select(selectUrl);
-  // currentUser: User;
-  // isAdmin: boolean;
-  // isEducator: boolean;
-  // isStudent: boolean;
 
-  constructor(private store$: Store<any>) {
+  constructor(private store$: Store<any>, public dialog: MatDialog) {
     this.currentRoute$.subscribe(value => console.log('route', value));
   }
 
@@ -40,4 +37,12 @@ export class NavMenuComponent implements OnInit {
     
   }
 
-}
+  openUserProfile() {
+    const dialogRef = this.dialog.open(UserProfileComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  }
