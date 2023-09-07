@@ -8,6 +8,7 @@ import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { ProjectsStoreModule } from './projects-store';
 import { TasksStoreModule } from './task-store';
 import { TimesheetsStoreModule } from './timesheet-store';
+import { SharedStoreModule } from './shared-store';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { TimesheetsStoreModule } from './timesheet-store';
     EmployeesStoreModule,
     ProjectsStoreModule,
     TasksStoreModule,
-    TimesheetsStoreModule
+    TimesheetsStoreModule,
+    SharedStoreModule
   ]
 })
 export class RootStoreModule { }

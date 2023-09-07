@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './shared/components/dashboard/dashboard.component';
+import { LoginComponent } from './shared/components/login/login.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent},
-  { path: 'login', component: DashboardComponent},
+  { path: 'login', component: LoginComponent},
   { path: 'dashboard', component: DashboardComponent},
   {
     path: 'employee',
@@ -21,7 +22,7 @@ const routes: Routes = [
   {
     path: 'timesheet',
     loadChildren: () => import('./timesheet/timesheet.module').then(x => x.TimesheetModule)
-  },
+  }
 ];
 
 @NgModule({

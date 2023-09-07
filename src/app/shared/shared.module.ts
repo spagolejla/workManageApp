@@ -8,6 +8,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { VarDirective } from './directives/variable.directive';
 import { YesNoPipe } from './pipes/yes-no.pipe';
 import { ConnectFormDirective } from './directives/connect-form-ngrx';
+import { LoginComponent } from './components/login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -18,19 +20,23 @@ import { ConnectFormDirective } from './directives/connect-form-ngrx';
     DashboardComponent,
     VarDirective,
     YesNoPipe,
-    ConnectFormDirective
+    ConnectFormDirective,
+    LoginComponent
   ],
   imports: [
     CommonModule,
     PrimengModule,
     MaterialDesignModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     NavMenuComponent,
     HeaderComponent,
     VarDirective,
     YesNoPipe,
-    ConnectFormDirective
+    ConnectFormDirective,
+    LoginComponent
   ]
 })
 export class SharedModule { }

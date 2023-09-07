@@ -90,7 +90,7 @@ export class EmployeeManageComponent implements OnInit {
         firstName: formRawData.firstName,
         lastName: formRawData.lastName,
         email: formRawData.email,
-        password: formRawData.telephone,
+        password: formRawData.password,
         telephone: formRawData.telephone,
         position: formRawData.position,
         startWorkDate: formRawData.startWorkDate,

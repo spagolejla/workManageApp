@@ -9,8 +9,6 @@ import { MaterialDesignModule } from './shared/modules/material-design.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { PrimengModule } from './shared/modules/primeng.module';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
 import { RootStoreModule } from './root-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
@@ -40,7 +38,8 @@ import { TimesheetModule } from './timesheet/timesheet.module';
     EmployeeModule,
     ProjectModule,
     TaskModule,
-    TimesheetModule
+    TimesheetModule,
+    SharedModule
    // NotificationModule
   ],
   providers: [],
