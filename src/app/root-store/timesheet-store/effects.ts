@@ -84,22 +84,15 @@ export class TimesheetEffects {
         )
     );
 
-    // @Effect()
-    // saveRequestEffect$() {
-    //     return this.actions$.pipe(
-    //         ofType(
-    //             ActionTypes.SAVE_TIMESHEET_REQUEST
-    //         ),
-    //         exhaustMap((action) =>
-    //             this.timesheetService.createTimesheet({}).pipe(
-    //                 map((timesheet) => {
-    //                     return timesheetActions.saveTimesheeteSuccess({ timesheet });
-    //                 }),
-    //                 catchError(error =>
-    //                     of(timesheetActions.errorAction({ error }))
-    //                 )
-    //             )
-    //         )
-    //     );
-    // }
+    loadEmployeeTimesheets$ = createEffect(() =>
+    this.actions$.pipe(
+        ofType(ActionTypes.LOAD_TIMESHEETS_BY_USER_REQUEST),
+        switchMap(action => this.timesheetService.getTimesheetsByUser(action['userId']).pipe(
+            map(timesheets => timesheetActions.loadTimesheetsByUserSuccess({ timesheets })),
+            catchError(() => of(noAction))
+        ))
+    )
+);
+
+
 }

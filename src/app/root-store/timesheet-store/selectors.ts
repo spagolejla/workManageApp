@@ -44,3 +44,8 @@ export const selectedTimesheetFromState = createSelector(
     }
 );
 
+const getEmployeeTimesheets = (state: State): any[] => {
+    return state.employeeTimesheets;
+}
+export const selectEmployeeTimesheets = createSelector(selectTimesheetState, getEmployeeTimesheets);
+

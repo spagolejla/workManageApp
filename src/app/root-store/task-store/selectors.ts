@@ -28,6 +28,11 @@ export const selectFilteredTasks = createSelector(
     }
 );
 
+export const selectTasksByEmployeeById = (id: string | null) => createSelector(
+    selectFilteredTasks,
+    (tasks) => tasks.filter(task => task.assigner.id == id)
+);
+
 export const selectFilteredTasksDesc = createSelector(
     selectFilteredTasks,
     (tasks) => {

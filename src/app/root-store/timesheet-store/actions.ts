@@ -12,6 +12,8 @@ export enum ActionTypes {
     UPDATE_TIMESHEET_SUCCESS = '[Timesheet] Update Timesheet Success',
     DELETE_TIMESHEET_REQUEST = '[Timesheet] Delete Timesheet Request',
     DELETE_TIMESHEET_SUCCESS = '[Timesheet] Delete Timesheet Success',
+    LOAD_TIMESHEETS_BY_USER_REQUEST = "[Timesheet] Load Timesheets By User Request",
+    LOAD_TIMESHEETS_BY_USER_SUCCESS = "[Timesheet] Load Timesheets By User Success",
     NO_ACTION  = "[Timesheet] No Action",
     ERROR  = "[Timesheet] ERROR Action",
 }
@@ -25,6 +27,8 @@ export const saveTimesheetSuccess = createAction(ActionTypes.SAVE_TIMESHEET_SUCC
 export const updateTimesheetRequest = createAction(ActionTypes.UPDATE_TIMESHEET_REQUEST, props<  { timesheet: Timesheet } >());
 export const updateTimesheetSuccess = createAction(ActionTypes.UPDATE_TIMESHEET_SUCCESS, props<  { timesheet: Timesheet } >());
 export const deleteTimesheetRequest = createAction(ActionTypes.DELETE_TIMESHEET_REQUEST, props<  { timesheetId: string } >());
+export const loadTimesheetsByUserRequest = createAction(ActionTypes.LOAD_TIMESHEETS_BY_USER_REQUEST, props<  { userId: string | null } >());
+export const loadTimesheetsByUserSuccess = createAction(ActionTypes.LOAD_TIMESHEETS_BY_USER_SUCCESS, props<  { timesheets: Array<Timesheet> } >());
 export const deleteTimesheetSuccess = createAction(ActionTypes.DELETE_TIMESHEET_SUCCESS);
 export const noAction = createAction(ActionTypes.NO_ACTION);
 export const errorAction = createAction(ActionTypes.ERROR, props<  { error: any } >());

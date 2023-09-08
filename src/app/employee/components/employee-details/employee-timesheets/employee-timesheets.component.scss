@@ -1,0 +1,54 @@
+.table-container {
+    margin-top: 20px;
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-top: 1em;
+}
+
+.mat-form-field {
+    font-size: 20px;
+    width: 50%;
+}
+
+
+table {
+    width: 100%;
+}
+
+
+
+#spinnerWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timesheetStatus {
+    padding: 5%;
+    margin: 1%;
+    width: 50%;
+    text-align: center;
+
+}
+
+.color-1 {
+    background-color: lightgrey;
+}
+
+.color-2 {
+    background: linear-gradient(60deg, #66bb6a, #43a047);
+}
+
+.color-3 {
+    background: linear-gradient(60deg, #26c6da, #00acc1);
+    color: white;
+}
+
+.color-4 {
+    background-color: #b00020;
+    color: white;
+}
+
+.color-5 {
+    background: linear-gradient(60deg, #ffa726, #fb8c00);
+}

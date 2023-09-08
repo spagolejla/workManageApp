@@ -9,6 +9,8 @@ import { SharedModule } from '../shared/shared.module';
 import { BasicDataComponent } from './components/employee-details/basic-data/basic-data.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { EmployeeTasksComponent } from './components/employee-details/employee-tasks/employee-tasks.component';
+import { EmployeeTimesheetsComponent } from './components/employee-details/employee-timesheets/employee-timesheets.component';
 
 
 
@@ -19,6 +21,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     EmployeeManageComponent,
     BasicDataComponent,
     UserProfileComponent,
+    EmployeeTasksComponent,
+    EmployeeTimesheetsComponent,
   ],
   imports: [
     CommonModule,

@@ -7,6 +7,7 @@ export interface State {
     selectedTimesheet?: Timesheet;
     searchActive: boolean;
     searchValue: string;
+    employeeTimesheets: Array<Timesheet>;
 };
 
 export const initialState: State = {
@@ -14,5 +15,6 @@ export const initialState: State = {
     timesheets: [],
     selectedTimesheet: undefined,
     searchActive: false,
-    searchValue: ""
+    searchValue: "",
+    employeeTimesheets: []
 };

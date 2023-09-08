@@ -20,6 +20,11 @@ const deviceReducer = createReducer (
       tmpState.selectedTimesheet = timesheet
       return tmpState;
     }),
+    on(actions.loadTimesheetsByUserSuccess, (state: State, { timesheets }) => {
+      const tmpState = { ... state };
+      tmpState.employeeTimesheets = timesheets
+      return tmpState;
+    }),
 );
 
 export function reducer(state: State | undefined, action: Action ) {
