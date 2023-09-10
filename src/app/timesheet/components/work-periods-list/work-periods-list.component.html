@@ -22,7 +22,7 @@
 
       <ng-container matColumnDef="totalHours" class="tx-center">
         <th mat-header-cell *matHeaderCellDef>  Total Hours </th>
-        <td mat-cell *matCellDef="let element" class="tx-center"> {{element.totalHours | number:'1.2-2'}} </td>
+        <td mat-cell *matCellDef="let element" class="tx-center"> {{element.totalHours | hoursMinutes}} </td>
         <td mat-footer-cell *matFooterCellDef class="total"> {{getTotalHours() | number:'1.2-2'}} </td>
 
       </ng-container>

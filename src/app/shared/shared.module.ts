@@ -10,6 +10,7 @@ import { YesNoPipe } from './pipes/yes-no.pipe';
 import { ConnectFormDirective } from './directives/connect-form-ngrx';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HoursMinutesPipe } from './pipes/hours-minutes.pipe';
 
 
 
@@ -21,7 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     VarDirective,
     YesNoPipe,
     ConnectFormDirective,
-    LoginComponent
+    LoginComponent,
+    HoursMinutesPipe
   ],
   imports: [
     CommonModule,
@@ -36,7 +38,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     VarDirective,
     YesNoPipe,
     ConnectFormDirective,
-    LoginComponent
+    LoginComponent,
+    HoursMinutesPipe
   ]
 })
 export class SharedModule { }

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { EmployeeState } from 'src/app/root-store/emloyees-store';
 import * as employeeSelectors from '../../../root-store/emloyees-store/selectors';
+import * as employeeActions from '../../../root-store/emloyees-store/actions';
 
 @Component({
   selector: 'app-employee-details',
@@ -21,8 +22,7 @@ export class EmployeeDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    this.selectedEmployee$.subscribe(value => console.log(value));
+    this.store$.dispatch(employeeActions.loadDataRequest());
   }
 
   goBack() {

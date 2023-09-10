@@ -1,0 +1,74 @@
+<div class="dialog-container">
+    <h2 mat-dialog-title>Create invoice</h2>
+    <mat-dialog-content class="mat-typography">
+        <mat-form-field>
+            <mat-label>Choose a month</mat-label>
+            <mat-select [formControl]="selectedMonthControl">
+                <mat-option *ngFor="let month of months" [value]="month">
+                    {{ month.name }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div  *ngIf="filteredTimesheets.length; else noTimesheets">
+            <h2>Timesheets to be included: </h2>
+            <table class="table-body" mat-table [dataSource]="filteredTimesheets" class="">
+                <ng-container matColumnDef="date">
+                    <th mat-header-cell *matHeaderCellDef> Date </th>
+                    <td mat-cell *matCellDef="let element"> {{element.date | date: 'shortDate'}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="user">
+                    <th mat-header-cell *matHeaderCellDef> User </th>
+                    <td mat-cell *matCellDef="let element"> {{element.user.name}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef> Status </th>
+                    <td mat-cell *matCellDef="let element">
+                        <div class="ml-3 timesheetStatus color-{{element.status}} tx-center">
+                            <span>{{TimesheetStatus[element.status]}}</span>
+                        </div>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="totalHours" class="tx-center">
+                    <th mat-header-cell *matHeaderCellDef> Total Hours </th>
+                    <td mat-cell *matCellDef="let element" class="tx-center"> {{element.totalHours | hoursMinutes}}
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <div class="mt-2">
+                <h2>Invoice details: </h2>
+                <span>
+                    <h3 class="d-inline">Total invoice hours: </h3>
+                </span> <span class="fw-bold float-end fs-3 mr-2">{{ invoice?.totalHours | hoursMinutes }}</span>
+                <hr> <br>
+                <span>
+                    <h3 class="d-inline">Number of days:</h3>
+                </span> <span class="fw-bold float-end fs-3 mr-2">{{invoice?.timesheets?.length}}</span>
+                <hr> <br>
+                <span>
+                    <h3 class="d-inline">Total pay:</h3>
+                </span> <span class="fw-bold float-end fs-3 mr-2">{{invoice?.totalCost | number:'1.2-2'}} {{' BAM'}}</span>
+                <hr> <br>
+
+            </div>
+            <span *ngIf="!timesheetsValid">
+                All timesheets need to be approved to create invoice.
+            </span>
+        </div>
+        <ng-template #noTimesheets>
+            <span *ngIf="selectedMonthControl.dirty">
+                There is no timesheets for selected month.
+            </span>
+        </ng-template>
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-button class="save-button" (click)="create()" [disabled]="!timesheetsValid">Create</button>
+    </mat-dialog-actions>
+</div>

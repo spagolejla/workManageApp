@@ -1,0 +1,34 @@
+.table-container {
+    margin-top: 20px;
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-top: 1em;
+}
+
+.mat-form-field {
+    font-size: 20px;
+    width: 50%;
+}
+
+table {
+    width: 100%;
+}
+
+#spinnerWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-button {
+
+    background-color: #4ac09c;
+    color: white;
+    float: right;
+
+}
+
+.table-body {
+    height: 300px;
+    overflow-y: auto;
+}

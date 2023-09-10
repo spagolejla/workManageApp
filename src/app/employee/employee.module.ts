@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { EmployeeTasksComponent } from './components/employee-details/employee-tasks/employee-tasks.component';
 import { EmployeeTimesheetsComponent } from './components/employee-details/employee-timesheets/employee-timesheets.component';
+import { InvoiceModule } from '../invoices/invoice.module';
 
 
 
@@ -29,7 +30,8 @@ import { EmployeeTimesheetsComponent } from './components/employee-details/emplo
     EmployeeRoutingModule,
     MaterialDesignModule,
     SharedModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    InvoiceModule
   ],
   entryComponents: [
     EmployeeManageComponent,

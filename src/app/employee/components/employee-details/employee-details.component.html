@@ -1,8 +1,8 @@
 <!-- <div id="spinnerWrapper">
     <mat-spinner *ngIf="!hideSpinner"></mat-spinner>
   </div> -->
-  
-  <div #employee="value" [value]="selectedEmployee$ | async"></div>
+
+<div #employee="value" [value]="selectedEmployee$ | async"></div>
 
 <div class="table-container">
   <mat-card class="mat-elevation-z3">
@@ -17,8 +17,10 @@
               <div class="content">
                 <div class="author">
                   <a href="#">
-                    <img *ngIf="!employee.value.avatarUrl" mat-card-xl-image alt="..." class="avatar border-gray" src="../../../../assets/{{employee.value?.picture}}">
-                    <img *ngIf="employee.value.avatarUrl" mat-card-xl-image alt="..." class="avatar border-gray" src="{{employee.value?.avatarUrl}}">
+                    <img *ngIf="!employee.value?.avatarUrl" mat-card-xl-image alt="..." class="avatar border-gray"
+                      src="../../../../assets/{{employee.value?.picture}}">
+                    <img *ngIf="employee.value?.avatarUrl" mat-card-xl-image alt="..." class="avatar border-gray"
+                      src="{{employee.value?.avatarUrl}}">
                     <h4 class="title">{{employee.value?.firstName + ' ' + employee.value?.lastName }}<br>
                       <small class="subtitle"> {{ employee.value?.position }} </small>
                     </h4>
@@ -37,8 +39,10 @@
                 <mat-tab label="Timesheets">
                   <ewm-employee-timesheets></ewm-employee-timesheets>
                 </mat-tab>
-                <mat-tab label="Invoices">Content 3</mat-tab>
-              </mat-tab-group>      
+                <mat-tab label="Invoices">
+                  <ewm-invoice [selectedEmployee]="selectedEmployee$ | async"></ewm-invoice>
+                </mat-tab>
+              </mat-tab-group>
             </div>
           </div>
         </div>

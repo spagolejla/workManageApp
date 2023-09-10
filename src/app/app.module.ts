@@ -16,6 +16,7 @@ import { EmployeeModule } from './employee/employee.module';
 import { ProjectModule } from './project/project.module';
 import { TaskModule } from './task/task.module';
 import { TimesheetModule } from './timesheet/timesheet.module';
+import { InvoiceModule } from './invoices/invoice.module';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { TimesheetModule } from './timesheet/timesheet.module';
     ProjectModule,
     TaskModule,
     TimesheetModule,
-    SharedModule
+    SharedModule,
+    InvoiceModule
    // NotificationModule
   ],
   providers: [],

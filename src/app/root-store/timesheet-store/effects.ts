@@ -27,25 +27,6 @@ export class TimesheetEffects {
         )
     );
 
-    saveTimesheetsRequest$ = createEffect(() =>
-        this.actions$.pipe(
-            ofType(ActionTypes.SAVE_TIMESHEET_REQUEST),
-            exhaustMap(action =>
-                this.timesheetService.createTimesheet(action['timesheet']).pipe(
-                    concatMap((timesheet) => {
-                        return [
-                            timesheetActions.saveTimesheetSuccess({ timesheet }),
-                            timesheetActions.loadDataRequest({date: new Date()}),
-                        ]
-                    }),
-                    catchError(error =>
-                        of(timesheetActions.errorAction({ error }))
-                    )
-                )
-            )
-        )
-    );
-
     updateTimesheetsRequest$ = createEffect(() =>
         this.actions$.pipe(
             ofType(ActionTypes.UPDATE_TIMESHEET_REQUEST),

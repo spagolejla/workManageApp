@@ -1,0 +1,93 @@
+.grid-container {
+    margin-top: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 1em;
+    margin-bottom: 3em;
+}
+
+.grid-body {
+    margin-top: 2px;
+}
+
+.back-btn {
+    float: right;
+    background-color: rgba(0, 150, 136, 1);
+    color: white;
+}
+
+.next-btn {
+    background-color: rgba(0, 150, 136, 1);
+    color: white;
+    margin-top: 5px;
+}
+
+.bck-btn {
+    margin-top: 5px;
+    color: rgba(0, 150, 136, 1);
+}
+
+a {
+    text-decoration: none;
+    color: rgba(0, 150, 136, 1);
+    margin-left: 20px;
+    margin-bottom: 30px;
+
+}
+
+.example-margin {
+    margin: 30px;
+}
+
+#spinnerWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dialog-container {
+    width: 600px;
+}
+
+.save-button {
+    background-color: #4ac09c;
+    color: white;
+}
+
+.timesheetStatus {
+    padding: 5%;
+    margin: 1%;
+    width: 60%;
+    text-align: center;
+}
+
+.color-1 {
+    background-color: lightgrey;
+}
+
+.color-2 {
+    background: linear-gradient(60deg, #66bb6a, #43a047);
+}
+
+.color-3 {
+    background: linear-gradient(60deg, #26c6da, #00acc1);
+    color: white;
+}
+
+.color-4 {
+    background-color: #b00020;
+    color: white;
+}
+
+.color-5 {
+    background: linear-gradient(60deg, #ffa726, #fb8c00);
+}
+
+table {
+    width: 100%;
+}
+
+.table-body {
+    height: 300px;
+    overflow-y: auto;
+}

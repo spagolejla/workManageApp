@@ -9,6 +9,7 @@ import { ProjectsStoreModule } from './projects-store';
 import { TasksStoreModule } from './task-store';
 import { TimesheetsStoreModule } from './timesheet-store';
 import { SharedStoreModule } from './shared-store';
+import { InvoicesStoreModule } from './invoice-store';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { SharedStoreModule } from './shared-store';
     ProjectsStoreModule,
     TasksStoreModule,
     TimesheetsStoreModule,
-    SharedStoreModule
+    SharedStoreModule,
+    InvoicesStoreModule
   ]
 })
 export class RootStoreModule { }
