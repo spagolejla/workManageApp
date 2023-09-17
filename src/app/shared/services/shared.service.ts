@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 import { DashboardData } from '../models/dashboard-data.model';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { TaskPerProjectReport } from 'src/app/reports/models/tasks-per-project-report.model';
 
 @Injectable({
   providedIn: 'root'
@@ -33,4 +34,31 @@ export class SharedService {
   getDashboardData(): Observable<DashboardData> {
     return this.httpClient.get<DashboardData>(this.URL + '/dashboard-data');
   }
+
+  getTasksPerProjectReportData(): Observable<Array<TaskPerProjectReport>> {
+    let taskPerProjectReportData: Array<TaskPerProjectReport> = [
+      {
+        projectId: '1',
+        projectName: 'project 1',
+        numberOfTasks: 5
+      },
+      {
+        projectId: '2',
+        projectName: 'project 1',
+        numberOfTasks: 50
+      },
+      {
+        projectId: '3',
+        projectName: 'project 1',
+        numberOfTasks: 23
+      },
+      {
+        projectId: '4',
+        projectName: 'project 1',
+        numberOfTasks: 10
+      },
+    ];
+    return of(taskPerProjectReportData);
+   }
+
 }

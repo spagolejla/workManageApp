@@ -10,37 +10,65 @@
         </div>
 
         <mat-nav-list>
-            <a mat-list-item class="sidenav-item single-item" [class.active] = "currentRoute.value == '/dashboard'" [routerLink]="['/dashboard']">
+            <a mat-list-item class="sidenav-item single-item" [class.active]="currentRoute.value == '/dashboard'"
+                [routerLink]="['/dashboard']">
                 <i class="material-icons sidenav-icon">dashboard</i>
                 Dashboard</a>
         </mat-nav-list>
 
         <mat-nav-list>
-            <a mat-list-item class="sidenav-item single-item" [class.active] = "currentRoute.value == '/employee'"  [routerLink]="['/employee']">
+            <a mat-list-item class="sidenav-item single-item" [class.active]="currentRoute.value == '/employee'"
+                [routerLink]="['/employee']">
                 <i class="material-icons sidenav-icon">people</i>
                 Employees</a>
         </mat-nav-list>
 
         <mat-nav-list>
-            <a mat-list-item class="sidenav-item single-item" [class.active] = "currentRoute.value == '/project'"  [routerLink]="['/project']">
+            <a mat-list-item class="sidenav-item single-item" [class.active]="currentRoute.value == '/project'"
+                [routerLink]="['/project']">
                 <i class="material-icons sidenav-icon">business</i>
                 Projects</a>
         </mat-nav-list>
 
         <mat-nav-list>
-            <a mat-list-item class="sidenav-item single-item"  [class.active] = "currentRoute.value == '/task'" [routerLink]="['/task']">
+            <a mat-list-item class="sidenav-item single-item" [class.active]="currentRoute.value == '/task'"
+                [routerLink]="['/task']">
                 <i class="material-icons sidenav-icon">list_alt</i>
                 Tasks</a>
         </mat-nav-list>
 
         <mat-nav-list>
-            <a mat-list-item class="sidenav-item single-item"  [class.active] = "currentRoute.value == '/timesheet'" [routerLink]="['/timesheet']">
+            <a mat-list-item class="sidenav-item single-item" [class.active]="currentRoute.value == '/timesheet'"
+                [routerLink]="['/timesheet']">
                 <i class="material-icons sidenav-icon">payment</i>
                 Timesheets</a>
         </mat-nav-list>
-        
+
         <mat-nav-list>
-            <a mat-list-item class="sidenav-item single-item"  (click)="openUserProfile()">
+            <!-- Collapsible Menu Item -->
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <a mat-list-item class="sidenav-item single-item">
+                        <i class="material-icons sidenav-icon">insert_chart</i>
+                        Reports</a>
+                </mat-expansion-panel-header>
+                <!-- Submenus -->
+                <a mat-list-item class="sidenav-item single-item"
+                    [class.active]="currentRoute.value == '/task-per-project-report'"
+                    [routerLink]="['/task-per-project-report']">
+                    Tasks per projects
+                </a>
+                <a mat-list-item class="sidenav-item single-item"
+                    [class.active]="currentRoute.value == '/report/task-per-project-report'"
+                    [routerLink]="['/task-per-project-report']">
+                    Tasks per projects
+                </a>
+            </mat-expansion-panel>
+        </mat-nav-list>
+
+
+        <mat-nav-list>
+            <a mat-list-item class="sidenav-item single-item" (click)="openUserProfile()">
                 <i class="material-icons sidenav-icon">payment</i>
                 User profile</a>
         </mat-nav-list>

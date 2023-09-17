@@ -17,6 +17,7 @@ import { ProjectModule } from './project/project.module';
 import { TaskModule } from './task/task.module';
 import { TimesheetModule } from './timesheet/timesheet.module';
 import { InvoiceModule } from './invoices/invoice.module';
+import { ReportModule } from './reports/report.module';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { InvoiceModule } from './invoices/invoice.module';
     TaskModule,
     TimesheetModule,
     SharedModule,
-    InvoiceModule
+    InvoiceModule,
+    ReportModule
    // NotificationModule
   ],
   providers: [],
