@@ -2,12 +2,16 @@
     <mat-card class="mat-elevation-z3">
         <div style="margin-bottom:15px;">
             <h1 style="display:inline;"> Number of tasks per projects </h1>
-        </div>          
-
-   
-
+        </div>   
+        <div class="chart-container" style="position: relative; height:70vh; width:160vw">
+            <canvas class="chart"
+            baseChart
+            [data]="barChartData"
+            [options]="barChartOptions"
+            [type]="barChartType"
+            >
+            </canvas>  
+        </div> 
+         
     </mat-card>
-
-
-
 </div>

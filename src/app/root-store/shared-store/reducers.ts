@@ -15,6 +15,11 @@ const deviceReducer = createReducer(
     tmpState.dashboardData = dashboardData
     return tmpState;
   }),
+  on(actions.loadTaskPerprojectReportDataSuccess, (state: State, { reportData }) => {
+    const tmpState = { ...state };
+    tmpState.taskPerProjectReportData = reportData
+    return tmpState;
+  }),
 );
 
 export function reducer(state: State | undefined, action: Action) {
