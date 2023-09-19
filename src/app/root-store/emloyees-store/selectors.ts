@@ -44,3 +44,13 @@ export const selectedEmployeeFromState = createSelector(
     }
 );
 
+export const selecteActiveVsNeactiveEmployeesReportData = createSelector(
+    selectEmployees,
+    (employees) => {
+        let numberOfActiveEmployees = employees.filter(emp => emp.active == true).length;
+        let numberOfInActiveEmployees = employees.filter(emp => emp.active != true).length;
+
+        return [numberOfActiveEmployees, numberOfInActiveEmployees];
+    }
+);
+

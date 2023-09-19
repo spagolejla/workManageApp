@@ -5,10 +5,14 @@ import { SharedModule } from 'primeng/api';
 import { TaskPerProjectReportComponent } from './components/task-per-project-report/task-per-project-report.component';
 import { MaterialDesignModule } from '../shared/modules/material-design.module';
 import { NgChartsModule } from 'ng2-charts';
+import { UserActivityReportComponent } from './components/user-activity-report/user-activity-report.component';
+import { ProgressOnProjectsReportComponent } from './components/progress-on-projects-report/progress-on-projects-report.component';
 
 @NgModule({
   declarations: [
-    TaskPerProjectReportComponent
+    TaskPerProjectReportComponent,
+    UserActivityReportComponent,
+    ProgressOnProjectsReportComponent
   ],
   imports: [
     CommonModule,

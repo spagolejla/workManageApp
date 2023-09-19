@@ -59,9 +59,14 @@
                     Tasks per projects
                 </a>
                 <a mat-list-item class="sidenav-item single-item"
-                    [class.active]="currentRoute.value == '/report/task-per-project-report'"
-                    [routerLink]="['/task-per-project-report']">
-                    Tasks per projects
+                    [class.active]="currentRoute.value == '/report/user-activity-report'"
+                    [routerLink]="['/user-activity-report']">
+                    User activity
+                </a>
+                <a mat-list-item class="sidenav-item single-item"
+                [class.active]="currentRoute.value == '/report/progress-on-projects-report'"
+                [routerLink]="['/progress-on-projects-report']">
+                Progress on projects
                 </a>
             </mat-expansion-panel>
         </mat-nav-list>

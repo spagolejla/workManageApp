@@ -1,0 +1,15 @@
+.chart-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* This evenly spaces the charts in a row */
+    margin: -10px; /* Adjust this margin as needed for spacing between charts */
+  }
+  
+  .chart-container {
+    width: calc(25% - 20px); /* Adjust the width for the number of charts in a row (e.g., 25% for 4 charts) */
+    margin: 10px; /* Adjust this margin as needed for spacing between charts */
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
+  
