@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
 import { catchError, map, of, switchMap } from "rxjs";
 import { SharedService } from "src/app/shared/services/shared.service";
-import { ActionTypes, loadDashboardDataSuccess, loadTaskPerprojectReportDataSuccess, noAction } from "./actions";
+import { ActionTypes, loadDashboardDataSuccess, loadProgressOnProjectReportDataSuccess, loadTaskPerprojectReportDataSuccess, noAction } from "./actions";
 import { SharedState } from ".";
 
 @Injectable()
@@ -25,12 +25,22 @@ export class SharedEffects {
         )
     );
 
-    
+
     loadTaskPerProjectReportData$ = createEffect(() =>
         this.actions$.pipe(
             ofType(ActionTypes.LOAD_TASK_PER_PROJECT_REPORT_DATA_REQUEST),
             switchMap(() => this.sharedService.getTasksPerProjectReportData().pipe(
                 map(reportData => loadTaskPerprojectReportDataSuccess({ reportData })),
+                catchError(() => of(noAction))
+            ))
+        )
+    );
+
+    loadProgressOnProjectReportData$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(ActionTypes.LOAD_PROGRESS_ON_PROJECT_REPORT_DATA_REQUEST),
+            switchMap(() => this.sharedService.getProgressOnProjecttReportData().pipe(
+                map(reportData => loadProgressOnProjectReportDataSuccess({ reportData })),
                 catchError(() => of(noAction))
             ))
         )

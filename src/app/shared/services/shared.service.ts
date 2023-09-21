@@ -4,6 +4,7 @@ import { DashboardData } from '../models/dashboard-data.model';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { TaskPerProjectReport } from 'src/app/reports/models/tasks-per-project-report.model';
+import { ProgressOnProjectReportModel } from 'src/app/reports/models/progress-on-project-report.model';
 
 @Injectable({
   providedIn: 'root'
@@ -59,6 +60,22 @@ export class SharedService {
       },
     ];
     return of(taskPerProjectReportData);
+   }
+
+   getProgressOnProjecttReportData(): Observable<Array<ProgressOnProjectReportModel>> {
+    let projectData: Array<ProgressOnProjectReportModel> = [
+      { name: 'Project A', finishedTasks: 10, unfinishedTasks: 5 },
+      { name: 'Project B', finishedTasks: 8, unfinishedTasks: 2 },
+      { name: 'Project C', finishedTasks: 5, unfinishedTasks: 7 },
+      { name: 'Project C', finishedTasks: 5, unfinishedTasks: 7 },
+      { name: 'Project C', finishedTasks: 5, unfinishedTasks: 7 },
+      { name: 'Project C', finishedTasks: 5, unfinishedTasks: 7 },
+      { name: 'Project C', finishedTasks: 5, unfinishedTasks: 7 },
+      { name: 'Project C', finishedTasks: 5, unfinishedTasks: 7 },
+      { name: 'Project C', finishedTasks: 5, unfinishedTasks: 7 },
+      // Add more project data as needed
+    ];
+    return of(projectData);
    }
 
 }

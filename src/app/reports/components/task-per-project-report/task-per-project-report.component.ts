@@ -1,22 +1,22 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { BaseChartDirective } from 'ng2-charts';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
-import DatalabelsPlugin from 'chartjs-plugin-datalabels';
+import { BaseChartDirective } from 'ng2-charts';
 import { Store } from '@ngrx/store';
+import { Subscription, tap } from 'rxjs';
+
+import { SharedState } from 'src/app/root-store/shared-store';
+import { TaskPerProjectReport } from '../../models/tasks-per-project-report.model';
+import { PdfService } from 'src/app/shared/services/pdf.service';
 
 import * as sharedActions from '../../../root-store/shared-store/actions';
 import * as sharedSelectors from '../../../root-store/shared-store/selectors';
-import { SharedState } from 'src/app/root-store/shared-store';
-import { TaskPerProjectReport } from '../../models/tasks-per-project-report.model';
-import { tap } from 'rxjs';
-import { PdfService } from 'src/app/shared/services/pdf.service';
 
 @Component({
   selector: 'app-task-per-project-report',
   templateUrl: './task-per-project-report.component.html',
   styleUrls: ['./task-per-project-report.component.scss']
 })
-export class TaskPerProjectReportComponent implements OnInit  {
+export class TaskPerProjectReportComponent implements OnInit, OnDestroy {
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
   @ViewChild('exportContent', { static: false }) exportContent!: ElementRef;
   taskPerProjectReportData: Array<TaskPerProjectReport> = [];
@@ -42,21 +42,22 @@ export class TaskPerProjectReportComponent implements OnInit  {
 
   taskPerProjectReportData$ = this.store$.select(sharedSelectors.selectTaskPerProjectReportData).pipe(
     tap(reportData => {
-       this.barChartLabels = reportData.map(x => x.projectName);
-     
-       this.barChartData = {
-         labels: this.barChartLabels,
-         datasets: [
-           {
-             data: reportData.map(data => data.numberOfTasks),
-             label: 'Number of Tasks',
-             backgroundColor: '#4AC09D',
-           },
-         ],
-       };
-       return this.taskPerProjectReportData = reportData;
+      this.barChartLabels = reportData.map(x => x.projectName);
+      this.barChartData = {
+        labels: this.barChartLabels,
+        datasets: [
+          {
+            data: reportData.map(data => data.numberOfTasks),
+            label: 'Number of Tasks',
+            backgroundColor: '#4AC09D',
+          },
+        ],
+      };
+      return this.taskPerProjectReportData = reportData;
     })
   );
+
+  subscriptions: Array<Subscription> = []
 
   constructor(
     private store$: Store<SharedState.State>,
@@ -69,10 +70,10 @@ export class TaskPerProjectReportComponent implements OnInit  {
   }
 
   initializeChart() {
-    this.taskPerProjectReportData$.subscribe(reportData => {
+    this.subscriptions.push(this.taskPerProjectReportData$.subscribe(reportData => {
       this.barChartLabels = reportData.map(data => data.projectName);
       this.barChartData.datasets[0].data = reportData.map(data => data.numberOfTasks);
-    });
+    }));
   }
 
   exportToPdf() {
@@ -80,8 +81,10 @@ export class TaskPerProjectReportComponent implements OnInit  {
     this.pdfService.generatePdf(content);
   }
 
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(subscription => {
+      subscription.unsubscribe();
+    })
+  }
 
-
- 
-    
 }

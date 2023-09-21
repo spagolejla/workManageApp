@@ -20,6 +20,11 @@ const deviceReducer = createReducer(
     tmpState.taskPerProjectReportData = reportData
     return tmpState;
   }),
+  on(actions.loadProgressOnProjectReportDataSuccess, (state: State, { reportData }) => {
+    const tmpState = { ...state };
+    tmpState.progressOnProjectReportData = reportData
+    return tmpState;
+  }),
 );
 
 export function reducer(state: State | undefined, action: Action) {

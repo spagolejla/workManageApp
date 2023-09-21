@@ -1,28 +1,20 @@
 <div class="table-container">
-    <div #exportContent>
-        <mat-card class="mat-elevation-z3">
-            <div style="margin-bottom:15px;">
-                <h1 style="display:inline;"> Progress on projects </h1>
-                <button mat-icon-button class="example-icon" (click)="exportToPdf()">
-                    <mat-icon>print</mat-icon>
-                </button>
-            </div>
-            <div class="chart-row">
-                <div *ngFor="let chartData of projectChartData; let i = index" class="chart-container">
-                  <div>{{ projectData[i].name }}</div>
-                  <div>
-                    <canvas baseChart
-                      [data]="chartData"
-                      [labels]="chartData.labels"
-                      [type]="'pie'"
-                    ></canvas>
-                  </div>
-                </div>
-              </div>
-              
-              
-
-
-        </mat-card>
-    </div>
+  <div #exportContent>
+    <mat-card class="mat-elevation-z3">
+      <div style="margin-bottom:15px;">
+        <h1 style="display:inline;"> Progress on projects </h1>
+        <button mat-icon-button class="example-icon" (click)="exportToPdf()">
+          <mat-icon>print</mat-icon>
+        </button>
+      </div>
+      <div class="chart-row" *ngIf="progressOnProjectReportData$ | async as reportData">
+        <div *ngFor="let chartData of projectChartData; let i = index" class="chart-container">
+          <div>{{ reportData[i].name }}</div>
+          <div>
+            <canvas baseChart [data]="chartData" [labels]="chartData.labels" [type]="'pie'"></canvas>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
 </div>
