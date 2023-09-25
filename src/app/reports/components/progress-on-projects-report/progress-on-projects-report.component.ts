@@ -29,6 +29,7 @@ export class ProgressOnProjectsReportComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.store$.dispatch(sharedActions.loadProgressOnProjectReportDataRequest());
     this.subscriptions.push(this.progressOnProjectReportData$.subscribe(reportData => {
+      this.projectChartData = [];
       reportData.forEach(project => {
         const chartData: ChartData = {
           labels: ['Finished', 'Unfinished'],

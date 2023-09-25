@@ -9,7 +9,7 @@
       </div>
       <div class="chart-row" *ngIf="progressOnProjectReportData$ | async as reportData">
         <div *ngFor="let chartData of projectChartData; let i = index" class="chart-container">
-          <div>{{ reportData[i].name }}</div>
+          <div>{{ reportData[i]?.name }}</div>
           <div>
             <canvas baseChart [data]="chartData" [labels]="chartData.labels" [type]="'pie'"></canvas>
           </div>

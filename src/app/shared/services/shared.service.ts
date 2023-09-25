@@ -12,9 +12,8 @@ import { ProgressOnProjectReportModel } from 'src/app/reports/models/progress-on
 export class SharedService {
   private navMenuOpened$ = new BehaviorSubject<boolean>(true);
 
-  URL: string = `${environment.apiUrl}/task`;
+  URL: string = `${environment.apiUrl}`;
   constructor(private httpClient: HttpClient) { }
-
 
   onNavMenuToggle(): Observable<boolean> {
     return this.navMenuOpened$.asObservable();
@@ -33,49 +32,15 @@ export class SharedService {
   }
 
   getDashboardData(): Observable<DashboardData> {
-    return this.httpClient.get<DashboardData>(this.URL + '/dashboard-data');
+    return this.httpClient.get<DashboardData>(this.URL + '/task/dashboard-data');
   }
 
   getTasksPerProjectReportData(): Observable<Array<TaskPerProjectReport>> {
-    let taskPerProjectReportData: Array<TaskPerProjectReport> = [
-      {
-        projectId: '1',
-        projectName: 'Project 1',
-        numberOfTasks: 5
-      },
-      {
-        projectId: '2',
-        projectName: 'Project 2',
-        numberOfTasks: 50
-      },
-      {
-        projectId: '3',
-        projectName: 'Project 3',
-        numberOfTasks: 23
-      },
-      {
-        projectId: '4',
-        projectName: 'Project 4',
-        numberOfTasks: 10
-      },
-    ];
-    return of(taskPerProjectReportData);
-   }
+    return this.httpClient.get<Array<TaskPerProjectReport>>(this.URL + '/task/task-per-project-report');
+  }
 
-   getProgressOnProjecttReportData(): Observable<Array<ProgressOnProjectReportModel>> {
-    let projectData: Array<ProgressOnProjectReportModel> = [
-      { name: 'Project A', finishedTasks: 10, unfinishedTasks: 5 },
-      { name: 'Project B', finishedTasks: 8, unfinishedTasks: 2 },
-      { name: 'Project C', finishedTasks: 5, unfinishedTasks: 7 },
-      { name: 'Project C', finishedTasks: 5, unfinishedTasks: 7 },
-      { name: 'Project C', finishedTasks: 5, unfinishedTasks: 7 },
-      { name: 'Project C', finishedTasks: 5, unfinishedTasks: 7 },
-      { name: 'Project C', finishedTasks: 5, unfinishedTasks: 7 },
-      { name: 'Project C', finishedTasks: 5, unfinishedTasks: 7 },
-      { name: 'Project C', finishedTasks: 5, unfinishedTasks: 7 },
-      // Add more project data as needed
-    ];
-    return of(projectData);
-   }
+  getProgressOnProjecttReportData(): Observable<Array<ProgressOnProjectReportModel>> {
+    return this.httpClient.get<Array<ProgressOnProjectReportModel>>(this.URL + '/task/progress-on-project-report');
+  }
 
 }

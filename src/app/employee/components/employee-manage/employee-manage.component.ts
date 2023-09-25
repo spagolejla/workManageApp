@@ -57,24 +57,7 @@ export class EmployeeManageComponent implements OnInit {
         salaryPerHour: [null],
         startWorkDate: [null],
         password: [null],
-        // password: [
-        //   null,
-        //   Validators.compose([
-        //     Validators.required,
-        //     // CustomValidators.patternValidator(/\d/, { hasNumber: true }),
-        //     // CustomValidators.patternValidator(/[A-Z]/, {
-        //     //   hasCapitalCase: true
-        //     // }),
-        //     // CustomValidators.patternValidator(/[a-z]/, { hasSmallCase: true }),
-        //     Validators.minLength(8)
-        //   ])
-        // ],
-        // confirmPassword: [null]
       },
-      {
-        // check whether our password and confirm password match
-        //validator: CustomValidators.passwordMatchValidator
-      }
     );
   }
 
@@ -96,14 +79,14 @@ export class EmployeeManageComponent implements OnInit {
         startWorkDate: formRawData.startWorkDate,
         shortDescription: formRawData.shortDescription,
         salaryPerHour: formRawData.salaryPerHour,
-        active: formRawData.active,
+        active: !!formRawData.active,
         avatarUrl: formRawData.avatarUrl,
       } as Employee;
 
       if (this.employeeId != "" && this.employeeId != undefined) {
         this.store$.dispatch(employeeActions.updateEmployeeeRequest({ employee }))
       } else {
-        employee.password = 'Test1234!';
+        employee.password = 'default';
         this.store$.dispatch(employeeActions.saveEmployeeeRequest({ employee }))
       }
       this.dialogRef.close();

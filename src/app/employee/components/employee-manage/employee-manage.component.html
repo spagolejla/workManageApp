@@ -17,7 +17,8 @@
         <mat-error *ngIf="fControls.email.errors?.required"> Email is required</mat-error>
       </mat-form-field>
       <mat-form-field>
-        <input type="text" matInput placeholder="Telephone" formControlName="telephone" required>
+        <mat-label>Telephone</mat-label>
+        <input type="tel" matInput  placeholder="387 61 000 000" formControlName="telephone" required>
         <mat-error *ngIf="fControls.telephone.errors?.required">Telephone is required</mat-error>
       </mat-form-field>
       <br>

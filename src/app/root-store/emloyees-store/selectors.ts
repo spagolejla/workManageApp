@@ -22,7 +22,9 @@ export const selectFilteredEmployees = createSelector(
     selectEmployees,
     (searchValue, employees) => {
         if (searchValue != "") {
-            return employees.filter(empl => empl.firstName?.toLocaleLowerCase().indexOf(searchValue?.toLocaleLowerCase()) != -1)
+            return employees.filter(empl => 
+                (empl.firstName?.toLocaleLowerCase().indexOf(searchValue?.toLocaleLowerCase()) != -1) ||
+                (empl.lastName?.toLocaleLowerCase().indexOf(searchValue?.toLocaleLowerCase()) != -1))
         }
         return employees;
     }
