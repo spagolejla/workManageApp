@@ -4,7 +4,7 @@
 
 <div #timesheet="value" [value]="selectedTimesheet$ | async"></div>
 
-<div class="table-container">
+<div class="table-container" *ngIf="timesheet.value">
     <mat-card class="mat-elevation-z3">
         <div style="margin-bottom:15px;">
             <h1 style="display:inline;"> Timesheet details </h1>

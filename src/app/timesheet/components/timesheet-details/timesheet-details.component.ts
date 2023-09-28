@@ -19,13 +19,15 @@ export class TimesheetDetailsComponent implements OnInit {
 
   disabled = false;
   selectedTimesheet$ = this.store$.select(timesheetSelectors.selectedTimesheet).pipe(tap((timesheet) => {
-    this.disabled = timesheet.status != TimesheetStatus.Submited
+    if (timesheet) {
+      this.disabled = timesheet.status != TimesheetStatus.Submited
+    }
   }));
 
   TimesheetStatus = TimesheetStatus;
   defaultDate = new Date();
   actionComment = new FormControl('');
-  
+
   constructor(
     private router: Router,
     private store$: Store<TimesheetState.State>
@@ -34,6 +36,10 @@ export class TimesheetDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    let previousDate = localStorage.getItem('timesheet-date');
+    if (previousDate) {
+      this.defaultDate = new Date(previousDate);
+    }
     this.store$.dispatch(timesheetActions.loadDataRequest({ date: this.defaultDate }));
     this.selectedTimesheet$.subscribe(value => console.log(value))
   }
@@ -50,25 +56,24 @@ export class TimesheetDetailsComponent implements OnInit {
       status: timesheetData.status,
       totalHours: timesheetData.totalHours,
       workPeriods: timesheetData.workPeriods,
-      actions: timesheetData.actions?.map(action => action)    }
+      actions: timesheetData.actions?.map(action => action)
+    }
     timesheet.status = status;
     let timesheetAction: TimesheetAction = {
       id: '',
       status,
       comment: this.actionComment.value,
-      user: {name: 'Lejla Spago', id: '9c937ee4-c992-4b5b-aedc-e21358214286'}, // TODO: get user when login is finished
+      user: { name: 'Lejla Spago', id: '9c937ee4-c992-4b5b-aedc-e21358214286' }, // TODO: get user when login is finished
       date: new Date()
     }
 
-    
+
 
     timesheet?.actions?.push(timesheetAction);
 
-    // timesheet?.actions = [...timesheet?.actions, timesheetAction]
-
-    this.store$.dispatch(timesheetActions.updateTimesheetRequest({timesheet}));
+    this.store$.dispatch(timesheetActions.updateTimesheetRequest({ timesheet }));
     this.actionComment.reset();
-    
+
   }
 
 }

@@ -4,6 +4,7 @@ import * as fromRouter from '@ngrx/router-store';
 import { RouterState } from "@angular/router";
 import { getSelectors } from "@ngrx/router-store";
 import { selectTitle, selectCurrentRoute, selectUrl, selectFragment, selectQueryParams, selectRouteParams } from "../router-selectors";
+import { Item } from "src/app/shared/models/item.model";
 
 export const selectEmployeeState = createFeatureSelector<State>('employees');
 
@@ -27,6 +28,13 @@ export const selectFilteredEmployees = createSelector(
                 (empl.lastName?.toLocaleLowerCase().indexOf(searchValue?.toLocaleLowerCase()) != -1))
         }
         return employees;
+    }
+);
+
+export const selectEmployeesForSelectInput = createSelector(
+    selectEmployees,
+    (employees) => {
+        return employees.map(employee => ({id: employee.id, name: employee.firstName + ' ' + employee.lastName }) as Item);
     }
 );
 

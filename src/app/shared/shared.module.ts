@@ -13,7 +13,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HoursMinutesPipe } from './pipes/hours-minutes.pipe';
 
 
-
 @NgModule({
   declarations: [
     HeaderComponent,

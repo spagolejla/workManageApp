@@ -114,7 +114,10 @@ export class ProjectComponent implements OnInit {
   }
 
   deleteProject(id: string) {
-    this.store$.dispatch(projectActions.deleteProjecteRequest({projectId: id}));
+    const confirmation = window.confirm('Are you sure you want to delete this project?');
+    if (confirmation) {
+      this.store$.dispatch(projectActions.deleteProjecteRequest({projectId: id}));
+    } 
   }
 
 }

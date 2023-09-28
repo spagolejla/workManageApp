@@ -130,7 +130,10 @@ export class TaskComponent implements OnInit {
   }
 
   deleteTask(id: string) {
-    this.store$.dispatch(taskActions.deleteTaskRequest({taskId: id}));
+    const confirmation = window.confirm('Are you sure you want to delete this task?');
+    if (confirmation) {
+      this.store$.dispatch(taskActions.deleteTaskRequest({taskId: id}));
+    } 
   }
 
 }

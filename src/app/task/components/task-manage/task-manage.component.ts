@@ -17,6 +17,7 @@ import { Observable, of } from 'rxjs';
 import { Employee } from 'src/app/employee/models/employee.model';
 import { Project } from 'src/app/project/models/project.model';
 import { v4 as uuidv4 } from 'uuid';
+import { Item } from 'src/app/shared/models/item.model';
 
 @Component({
   selector: 'app-task-manage',
@@ -30,7 +31,7 @@ export class TaskManageComponent implements OnInit {
   formGroup!: FormGroup;
 
   selectedTask$ = this.store$.select(taskSelectors.selectedTaskFromState);
-  assigners$: Observable<Employee[]> = this.store$.select(employeeSelectors.selectEmployees); 
+  assigners$: Observable<Item[]> = this.store$.select(employeeSelectors.selectEmployeesForSelectInput); 
   projects$: Observable<Project[]>  = this.store$.select(projectSelectors.selectProjects);
 
   statusItems = (Object.keys(TaskStatus) as Array<keyof typeof TaskStatus>)
@@ -76,6 +77,21 @@ export class TaskManageComponent implements OnInit {
         endDate: [""],
       }
     );
+
+
+
+    this.selectedTask$.subscribe(selectedTask => {
+      if(selectedTask) {
+        console.log(selectedTask);
+        this.formGroup.patchValue({
+          assigner: selectedTask.assigner,
+          project: selectedTask.project
+        })
+      }
+    })
+    this.assigners$.subscribe(value=> console.log(value))
+    this.projects$.subscribe(value=> console.log(value))
+
   }
 
   get fControls(): any {
@@ -93,7 +109,7 @@ export class TaskManageComponent implements OnInit {
         createdDate: new Date(),
         startDate: formRawData.startDate,
         endDate: formRawData.endDate,
-        assigner: {id: formRawData.assigner.id, name: formRawData.assigner.firstName + ' ' + formRawData.assigner.lastName},
+        assigner: {id: formRawData.assigner.id, name: formRawData.assigner.name},
         project: formRawData.project,
         status: this.taskId ? formRawData.status : TaskStatus.Created,
         priority: formRawData.priority,
@@ -107,5 +123,11 @@ export class TaskManageComponent implements OnInit {
       this.dialogRef.close();
     }
   }
+
+  customCompare(optionValue: any, controlValue: any): boolean {
+    // Compare options based on their 'id' property
+    return optionValue.id === controlValue.id;
+  }
+  
 
 }

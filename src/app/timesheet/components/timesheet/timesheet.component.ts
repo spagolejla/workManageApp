@@ -57,6 +57,10 @@ export class TimesheetComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    let previousDate = localStorage.getItem('timesheet-date');
+    if (previousDate) {
+      this.defaultDate = new Date(previousDate);
+    }
     this.store$.dispatch(timesheetActions.loadDataRequest({ date: this.defaultDate }));
   }
 
@@ -68,6 +72,7 @@ export class TimesheetComponent implements OnInit {
 
   dateChanged(event: MatDatepickerInputEvent<Date>) {
     const date = (event.target).value;
+    localStorage.setItem('timesheet-date', date?.toDateString() as string);
     this.store$.dispatch(timesheetActions.loadDataRequest({ date }));
   }
 

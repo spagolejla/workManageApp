@@ -38,7 +38,7 @@
 
             <div class="row">
                 <mat-form-field>
-                    <mat-select matSelect formControlName="project" placeholder="Project" class="dropdown-input" required>
+                    <mat-select matSelect  [compareWith]="customCompare" formControlName="project" placeholder="Project" class="dropdown-input" required>
                         <mat-option *ngFor="let item of (projects$ | async)" [value]="item">{{item.name}}</mat-option>
 
                     </mat-select>
@@ -48,9 +48,8 @@
 
             <div class="row">  
                 <mat-form-field>
-                   <mat-select matSelect formControlName="assigner"  placeholder="Assigner" class="dropdown-input" required>
-                     <mat-option *ngFor="let item of (assigners$ | async) " [value]="item">{{item.firstName + '' + item.lastName}}</mat-option>
-                     
+                   <mat-select [compareWith]="customCompare" matSelect formControlName="assigner"  placeholder="Assigner" class="dropdown-input" required>
+                     <mat-option *ngFor="let item of (assigners$ | async) " [value]="item">{{item.name}}</mat-option>
                    </mat-select>
                    <mat-error *ngIf="fControls.assigner.errors?.required">Assigner field is required</mat-error>
                  </mat-form-field>

@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -10,13 +10,14 @@ import * as projectActions from '../../../root-store/projects-store/actions';
 import { Project } from '../../models/project.model';
 import { ProjectStatus } from '../../models/project-status-model';
 import { v4 as uuidv4 } from 'uuid';
+import { DateValidators } from 'src/app/shared/validators/date-validator';
 
 @Component({
   selector: 'app-project-manage',
   templateUrl: './project-manage.component.html',
   styleUrls: ['./project-manage.component.scss']
 })
-export class ProjectManageComponent implements OnInit {
+export class ProjectManageComponent {
 
   title = "";
   projectId;
@@ -44,9 +45,6 @@ export class ProjectManageComponent implements OnInit {
       this.title = data.title;
       this.projectId = data.projectId;
     }
-  }
-
-  ngOnInit(): void {
 
     this.formGroup = this.fb.group(
       {
@@ -57,7 +55,10 @@ export class ProjectManageComponent implements OnInit {
         budgetAmount: [null],
         startDate: [""],
         endDate: [""],
-      }
+      },
+      { validator: Validators.compose([
+        DateValidators.dateLessThan('startDate', 'endDate', { 'startDateError': true }),
+    ])}
     );
   }
 

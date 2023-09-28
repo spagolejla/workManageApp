@@ -101,7 +101,10 @@ export class EmployeeComponent implements OnInit {
   }
 
   deleteEmployee(id: string) {
-    this.store$.dispatch(employeeActions.deleteEmployeeeRequest({employeeId: id}));
+    const confirmation = window.confirm('Are you sure you want to delete this employee?');
+    if (confirmation) {
+      this.store$.dispatch(employeeActions.deleteEmployeeeRequest({employeeId: id}));
+    } 
   }
 
 }
